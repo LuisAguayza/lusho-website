@@ -1,9 +1,7 @@
 import { useStorage } from "hooks";
-import { createContext, FC, PropsWithChildren, useCallback, useContext, useMemo, useReducer } from "react";
+import { createContext, FC, PropsWithChildren, useCallback, useContext, useEffect, useReducer } from "react";
 import { IntlProvider } from 'react-intl';
-import { StorageConfigType } from "types";
-import { defaultLocale, LanguageContextType, LanguageState, localeMessages, LocaleType, LOCALE_COOKIE, reducer } from ".";
-import { setCookie } from "../utils";
+import { defaultLocale, LanguageContextType, LanguageState, localeMessages, reducer } from ".";
 
 const LanguageContext = createContext({} as LanguageContextType);
 
@@ -12,33 +10,22 @@ const INITIAL_STATE: LanguageState = {
 };
 
 export const LanguageProvider: FC<PropsWithChildren> = ({ children }) => {
-  const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
-
-  console.log(state)
-
+  
+  const { setStorage, stateStorage: language} = useStorage<LanguageState>('language', INITIAL_STATE);
+  const [state, dispatch] = useReducer(reducer, language);
+  
+  console.log('lang')
+  
   const changeLanguage = useCallback(
     () => {
       dispatch({ type: 'SWITCH_LANGUAGE' });
-      document.documentElement.lang = state.locale;
-      setCookie(LOCALE_COOKIE, state.locale);
     },
     [],
   );
 
-  const rehydrateLocalState = useCallback(
-    (payload: LanguageState) => {
-      dispatch({ type: 'REHYDRATE', payload });
-    },
-    [],
-  );
-
-  const config = useMemo<StorageConfigType<LanguageState>>(() => ({
-    key: 'languaje',
-    version: 1,
-    migrate: (state) => ({...state})
-  }), []);
-
-  useStorage({ state, setState: rehydrateLocalState, config });
+  useEffect(() => {
+    setStorage(state);
+  }, [state]);
 
   return (
     <LanguageContext.Provider

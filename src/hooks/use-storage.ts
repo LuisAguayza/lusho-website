@@ -1,86 +1,15 @@
-import localForage from 'localforage';
-import { useEffect, useState } from 'react';
-import { StorageConfigType } from '../types';
-
-const isObjectLiked = (value: Object) =>
-  value.constructor.name === 'Array' || value.constructor.name === 'Object';
-
-const rehydrate = (value: any, defaultValue?: any) => {
-  if (!value) return defaultValue;
-  
-  try {
-    const parse = JSON.parse(value);
-    return parse;
-  } catch (err) {
-    return defaultValue;
-  }
+type Props<T> = {
+  stateStorage: T,
+  setStorage: (data: T) => void
 };
 
-const hydrate = (value: Object) => {
-  if (!isObjectLiked(value)) {
-    return value;
-  }
-  return JSON.stringify(value);
-};
+export const useStorage = <T>(key: string, data: T): Props<T> => {
 
-const createMigration = <T>(opts: StorageConfigType<T>, data: T) => {
-  return new Promise<T>((resolve, reject) => {
-    const key = `${opts.key}-version`;
-    localForage.getItem(key, (_err, version) => {
-      if (version !== opts.version) {
-        data = opts.migrate(data);
-        localForage.setItem(opts.key, rehydrate(data), (err) => {
-          if (err) return reject(err);
-          localForage.setItem(key, opts.version, (err) => {
-            if (err) return reject(err);
-            return resolve(data);
-          });
-        });
-      } else {
-        resolve(data);
-      }
-    });
-  });
-};
-
-export type useStorageProps<T> = {
-  config: StorageConfigType<T>;
-  state: T;
-  setState: (payload: T) => void;
-}
-
-export const useStorage = <T>({ config, state, setState, }: useStorageProps<T>) => {
-  const [rehydrated, setRehydrated] = useState(false);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    async function init() {
-      await localForage.getItem(config.key, (err, value) => {
-        if (err) {
-          setRehydrated(true);
-          return setError(err);
-        }
-        // Migrate persisted data
-        const restoredValue = rehydrate(value);
-        if (typeof config.migrate === 'function') {
-          createMigration(config, restoredValue)
-            .then((data) => setState(data))
-            .then(() => setRehydrated(true));
-        } else {
-          setState(restoredValue);
-          setRehydrated(true);
-        }
-      });
-    }
-    init();
-  }, []);
-
-  useEffect(() => {
-    localForage.setItem(config.key, hydrate(state as any));
-  }, [state]);
+  const value = localStorage.getItem(key); 
+  const setStorage = (value: T) => localStorage.setItem(key, JSON.stringify(value));
 
   return {
-    rehydrated,
-    error,
-  };
-};
+    stateStorage: value ? JSON.parse(value) as T : data,
+    setStorage
+  }
+}

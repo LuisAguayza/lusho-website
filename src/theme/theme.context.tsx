@@ -1,18 +1,18 @@
-import { createContext, FC, PropsWithChildren, useCallback, useContext, useMemo, useReducer } from "react";
+import { createContext, FC, PropsWithChildren, useCallback, useContext, useEffect, useReducer } from "react";
 import { ThemeProvider } from "styled-components";
-import { ThemeState, ThemeContextType, themeReducer } from ".";
+import { ThemeContextType, themeReducer, ThemeState } from ".";
 import { useStorage } from "../hooks";
-import { StorageConfigType } from "../types";
 
 export const ThemeContext = createContext({} as ThemeContextType);
 
 const INITIAL_THEME_STATE: ThemeState = {
-  mode: 'dark'
+  mode: 'light'
 };
 
 export const CustomThemeProvider: FC<PropsWithChildren> = ({ children }) => {
   
-  const [state, dispatch] = useReducer(themeReducer, INITIAL_THEME_STATE);
+  const { setStorage, stateStorage} = useStorage<ThemeState>('theme', INITIAL_THEME_STATE);
+  const [state, dispatch] = useReducer(themeReducer, stateStorage);
 
   const toggleTheme = useCallback(
     () => {
@@ -22,20 +22,10 @@ export const CustomThemeProvider: FC<PropsWithChildren> = ({ children }) => {
   );
   
   console.log('theme')
-  const rehydrateLocalState = useCallback(
-    (payload: ThemeState) => {
-      dispatch({ type: 'REHYDRATE', payload });
-    },
-    [],
-  );
 
-  const config = useMemo<StorageConfigType<ThemeState>>(() => ({
-    key: 'theme',
-    version: 1,
-    migrate: (state) => ({...state})
-  }), []);
-
-  useStorage({ state, setState: rehydrateLocalState, config });
+  useEffect(() => {
+    setStorage(state);
+  }, [state]);
 
   return (
     <ThemeContext.Provider
