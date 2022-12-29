@@ -1,21 +1,17 @@
-import { LocaleType } from ".";
-
-export type LanguageState = {
-  locale: LocaleType;
-}
+import { LanguageState } from ".";
 
 export type LanguageAction =
   | { type: 'REHYDRATE', payload: LanguageState }
-  | { type: 'SET_LANGUAGE', payload: LocaleType }
+  | { type: 'SWITCH_LANGUAGE' }
   ;
 
 export const reducer = (state: LanguageState, action: LanguageAction): LanguageState => {
   switch (action.type) {
     case "REHYDRATE":
-      return { ...action.payload };
+      return {  ...state, ...action.payload };
 
-    case 'SET_LANGUAGE':
-      return { ...state, locale: action.payload };
+    case 'SWITCH_LANGUAGE':
+      return { ...state, locale: state.locale === 'en' ? 'es' : 'en' };
 
     default:
       throw new Error(`Unknown action: ${JSON.stringify(action)}`);

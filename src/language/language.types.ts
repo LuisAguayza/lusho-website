@@ -10,3 +10,12 @@ export type LocaleMessagesType = {
 export type LocaleNamesType = {
   [key in LocaleType]: string;
 };
+
+export type LanguageContextType = {
+  locale: LocaleType;
+  changeLanguage: () => void;
+};
+
+export type LanguageState = {
+  locale: LocaleType;
+};

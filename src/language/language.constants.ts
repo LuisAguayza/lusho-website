@@ -1,10 +1,10 @@
-import { LocaleMessagesType } from ".";
+import { LocaleMessagesType, LocaleType } from ".";
 import messagesEn from './en.json';
 import messagesES from './es.json';
 
 export const LOCALE_COOKIE = "locale";
 
-export const defaultLocale = 'en' as const;
+export const defaultLocale: LocaleType = 'en' as const;
 
 export const locales = ['en', 'es'] as const;
 
