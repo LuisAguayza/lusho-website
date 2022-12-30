@@ -1,19 +1,24 @@
-import { Container } from "components-styled";
+import { Container, Typography } from "components-styled";
 import { useLanguage } from "language";
 import { FormattedMessage } from "react-intl";
 import { useTheme } from "./theme";
 
 function App() {
-  
+
   const { toggleTheme } = useTheme();
   const { changeLanguage } = useLanguage();
-  
+
   return (
     <Container>
-      <h1>
-      <FormattedMessage id='hello' />
-
-      </h1>
+      <Typography>
+        <FormattedMessage id='hello' />
+      </Typography>
+      <Typography as='h2'>
+        <FormattedMessage id='hello' />
+      </Typography>
+      <Typography as='h3'>
+        <FormattedMessage id='hello' />
+      </Typography>
       <button onClick={toggleTheme}>toggle</button>
       <button onClick={changeLanguage}>intl</button>
     </Container>

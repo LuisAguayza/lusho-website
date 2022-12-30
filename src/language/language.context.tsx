@@ -6,39 +6,34 @@ import { defaultLocale, LanguageContextType, LanguageState, localeMessages, redu
 const LanguageContext = createContext({} as LanguageContextType);
 
 const INITIAL_STATE: LanguageState = {
-  locale: defaultLocale,
+	locale: defaultLocale,
 };
 
 export const LanguageProvider: FC<PropsWithChildren> = ({ children }) => {
-  
-  const { setStorage, stateStorage: language} = useStorage<LanguageState>('language', INITIAL_STATE);
-  const [state, dispatch] = useReducer(reducer, language);
-  
-  console.log('lang')
-  
-  const changeLanguage = useCallback(
-    () => {
-      dispatch({ type: 'SWITCH_LANGUAGE' });
-    },
-    [],
-  );
 
-  useEffect(() => {
-    setStorage(state);
-  }, [state]);
+	const { setStorage, stateStorage: language } = useStorage<LanguageState>('language', INITIAL_STATE);
+	const [state, dispatch] = useReducer(reducer, language);
 
-  return (
-    <LanguageContext.Provider
-      value={{
-        locale: state.locale,
-        changeLanguage
-      }}
-    >
-      <IntlProvider locale={state.locale} messages={localeMessages[state.locale]}>
-        {children}
-      </IntlProvider>
-    </LanguageContext.Provider>
-  );
+	const changeLanguage = useCallback(() => {
+		dispatch({ type: 'SWITCH_LANGUAGE' });
+	}, []);
+
+	useEffect(() => {
+		setStorage(state);
+	}, [state]);
+
+	return (
+		<LanguageContext.Provider
+			value={{
+				locale: state.locale,
+				changeLanguage
+			}}
+		>
+			<IntlProvider locale={state.locale} messages={localeMessages[state.locale]}>
+				{children}
+			</IntlProvider>
+		</LanguageContext.Provider>
+	);
 };
 
 export const useLanguage = () => useContext(LanguageContext);

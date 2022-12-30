@@ -6,12 +6,12 @@ import { useStorage } from "../hooks";
 export const ThemeContext = createContext({} as ThemeContextType);
 
 const INITIAL_THEME_STATE: ThemeState = {
-  mode: 'light'
+  mode: 'dark'
 };
 
 export const CustomThemeProvider: FC<PropsWithChildren> = ({ children }) => {
-  
-  const { setStorage, stateStorage} = useStorage<ThemeState>('theme', INITIAL_THEME_STATE);
+
+  const { setStorage, stateStorage } = useStorage<ThemeState>('theme', INITIAL_THEME_STATE);
   const [state, dispatch] = useReducer(themeReducer, stateStorage);
 
   const toggleTheme = useCallback(
@@ -20,8 +20,6 @@ export const CustomThemeProvider: FC<PropsWithChildren> = ({ children }) => {
     },
     [],
   );
-  
-  console.log('theme')
 
   useEffect(() => {
     setStorage(state);

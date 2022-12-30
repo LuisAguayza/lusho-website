@@ -1,9 +1,9 @@
 import styled from "styled-components";
-import * as themeConfig from "theme";
+import * as config from "theme";
+import { styles } from "theme";
 
 export const Container = styled.div`
-  --cero: 0px;
-  background-color: ${themeConfig.backgroundColor};
-  margin: --cero;
+  background-color: ${config.containerColor};
   transition: all 0.25s ease;
 `;
+
