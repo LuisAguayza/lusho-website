@@ -15,15 +15,12 @@ export const CustomThemeProvider: FC<PropsWithChildren> = ({ children }) => {
     key: 'theme', 
     payload: INITIAL_THEME_STATE
   });
-  
+
   const [state, dispatch] = useReducer(themeReducer, stateStorage);
 
-  const toggleTheme = useCallback(
-    () => {
-      dispatch({ type: 'SWITCH_THEME' });
-    },
-    [],
-  );
+  const toggleTheme = useCallback(() => {
+    dispatch({ type: 'SWITCH_THEME' });
+  },[]);
 
   useEffect(() => {
     setStorage(state);

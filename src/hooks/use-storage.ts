@@ -10,11 +10,19 @@ type Response<T> = {
 
 export const useStorage = <T>({ key, payload }: Props<T>): Response<T> => {
 
-  const value = localStorage.getItem(key); 
+  let stateStorage: T;
+  let value = localStorage.getItem(key); 
+  
+  try {
+    stateStorage = value ? JSON.parse(value) as T : payload;
+  } catch {
+    stateStorage = payload
+  }
+
   const setStorage = (value: T) => localStorage.setItem(key, JSON.stringify(value));
 
   return {
-    stateStorage: value ? JSON.parse(value) as T : payload,
+    stateStorage, 
     setStorage
   }
 }
