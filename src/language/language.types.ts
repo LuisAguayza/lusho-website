@@ -7,10 +7,6 @@ export type LocaleMessagesType = {
   [key in LocaleType]?: Record<string, string> | Record<string, MessageFormatElement[]>;
 };
 
-export type LocaleNamesType = {
-  [key in LocaleType]: string;
-};
-
 export type LanguageContextType = {
   locale: LocaleType;
   changeLanguage: () => void;

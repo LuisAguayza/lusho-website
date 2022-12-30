@@ -7,18 +7,16 @@ export const ThemeContext = createContext({} as ThemeContextType);
 
 export const CustomThemeProvider: FC<PropsWithChildren> = ({ children }) => {
 
-  const isDarkSystemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches;
-  
+  const isLightSystemTheme = window.matchMedia("(prefers-color-scheme: light)").matches;
+
   const { setStorage, stateStorage } = useStorage<ThemeState>({
     key: 'theme', 
-    payload: isDarkSystemTheme ? { mode: 'dark' } : { mode: 'light' }
+    payload: isLightSystemTheme ? { mode: 'light' } : { mode: 'dark' }
   });
   
   const [state, dispatch] = useReducer(themeReducer, stateStorage);
 
-  const toggleTheme = useCallback(() => {
-    dispatch({ type: 'SWITCH_THEME' });
-  },[]);
+  const toggleTheme = () => dispatch({ type: 'SWITCH_THEME' });
 
   useEffect(() => {
     setStorage(state);
