@@ -18,9 +18,7 @@ export const LanguageProvider: FC<PropsWithChildren> = ({ children }) => {
   
 	const [state, dispatch] = useReducer(reducer, language);
 
-	const changeLanguage = useCallback(() => {
-		dispatch({ type: 'SWITCH_LANGUAGE' });
-	}, []);
+	const changeLanguage = () => dispatch({ type: 'SWITCH_LANGUAGE' });
 
 	useEffect(() => {
 		setStorage(state);

@@ -5,17 +5,15 @@ import { useStorage } from "../hooks";
 
 export const ThemeContext = createContext({} as ThemeContextType);
 
-const INITIAL_THEME_STATE: ThemeState = {
-  mode: 'dark'
-};
-
 export const CustomThemeProvider: FC<PropsWithChildren> = ({ children }) => {
 
+  const isDarkSystemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  
   const { setStorage, stateStorage } = useStorage<ThemeState>({
     key: 'theme', 
-    payload: INITIAL_THEME_STATE
+    payload: isDarkSystemTheme ? { mode: 'dark' } : { mode: 'light' }
   });
-
+  
   const [state, dispatch] = useReducer(themeReducer, stateStorage);
 
   const toggleTheme = useCallback(() => {
