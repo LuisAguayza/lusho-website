@@ -11,7 +11,11 @@ const INITIAL_THEME_STATE: ThemeState = {
 
 export const CustomThemeProvider: FC<PropsWithChildren> = ({ children }) => {
 
-  const { setStorage, stateStorage } = useStorage<ThemeState>('theme', INITIAL_THEME_STATE);
+  const { setStorage, stateStorage } = useStorage<ThemeState>({
+    key: 'theme', 
+    payload: INITIAL_THEME_STATE
+  });
+  
   const [state, dispatch] = useReducer(themeReducer, stateStorage);
 
   const toggleTheme = useCallback(

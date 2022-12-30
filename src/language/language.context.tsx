@@ -11,7 +11,11 @@ const INITIAL_STATE: LanguageState = {
 
 export const LanguageProvider: FC<PropsWithChildren> = ({ children }) => {
 
-	const { setStorage, stateStorage: language } = useStorage<LanguageState>('language', INITIAL_STATE);
+	const { setStorage, stateStorage: language } = useStorage<LanguageState>({
+    key: 'language',
+    payload: INITIAL_STATE
+  });
+  
 	const [state, dispatch] = useReducer(reducer, language);
 
 	const changeLanguage = useCallback(() => {
