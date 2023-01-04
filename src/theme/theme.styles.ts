@@ -43,5 +43,11 @@ export const styles = {
     tooltip: 10,
     fixed: 100,
     modal: 1000
+  },
+  breakpoints: {
+    lg: '1440px',
+    md: '768px',
+    sm: '576px',
+    xs: '350px',
   }
 }

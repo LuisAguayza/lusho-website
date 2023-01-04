@@ -2,6 +2,7 @@ import { Container, Typography } from "components-styled";
 import { useLanguage } from "language";
 import { FormattedMessage } from "react-intl";
 import { useTheme } from "./theme";
+import { HeaderLayout } from "components/header";
 
 function App() {
 
@@ -10,17 +11,7 @@ function App() {
 
   return (
     <Container>
-      <Typography>
-        <FormattedMessage id='hello' />
-      </Typography>
-      <Typography as='h2'>
-        <FormattedMessage id='hello' />
-      </Typography>
-      <Typography as='h3'>
-        <FormattedMessage id='hello' />
-      </Typography>
-      <button onClick={toggleTheme}>toggle</button>
-      <button onClick={changeLanguage}>intl</button>
+      <HeaderLayout />
     </Container>
   )
 }

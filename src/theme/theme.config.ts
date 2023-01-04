@@ -11,7 +11,7 @@ export const titleColor: theme.ThemeSet = theme('mode', {
 });
 
 export const titleAlternativeColor: theme.ThemeSet = theme('mode', {
-  light: 'hsl(0, 0%, 0%)',
+  light: 'red',
   dark: 'hsl(0, 0%, 80%)',
 });
 
