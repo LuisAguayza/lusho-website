@@ -27,8 +27,10 @@ export const HeaderLayout = () => {
 								Home
 							</Link>
 						</ListItem>
+						<Icon className='uil uil-times' />
 					</List>
 				</NavMenu>
+				<Icon className='uil uil-apps' />
 			</Nav>
 		</Header>
 	)
