@@ -45,7 +45,7 @@ export const styles = {
     modal: 1000
   },
   breakpoints: {
-    lg: '1440px',
+    lg: '992px',
     md: '768px',
     sm: '576px',
     xs: '350px',
