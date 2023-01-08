@@ -1,4 +1,4 @@
-import { Container, Typography } from "components-styled";
+import { Button, Container, Typography } from "components-styled";
 import { useLanguage } from "language";
 import { FormattedMessage } from "react-intl";
 import { useTheme } from "./theme";
