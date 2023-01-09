@@ -1,7 +1,7 @@
+import { Container, Icon } from "components-styled";
 import styled from "styled-components";
 import * as colors from "theme";
 import { styles } from "theme";
-import { Container } from "../../components-styled/layout";
 
 export const Header = styled.header`
   width: 100%;
@@ -32,19 +32,6 @@ export const NavLogo = styled(Nav)`
 	font-weight: ${styles.fontWeight.medium};
 `;
 
-export const Link = styled.a`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-	cursor: pointer;
-  font-size: ${styles.typography.small};
-	font-weight: ${styles.fontWeight.medium};
-	transition: .3s;
-	&:hover {
-		color: ${colors.titleAlternativeColor};
-	}
-`;
-
 export const List = styled.ul`
   display: flex;
   column-gap: 2rem;
@@ -66,36 +53,20 @@ export const ListItem = styled.li`
   transition: all 0.25s ease;
 `;
 
-type IconProps = {
-  position?: 'absolute' | ''; 
-}
-
-export const Icon = styled.i<IconProps>`
+export const IconHeader = styled(Icon)<{ position?: 'absolute' }>`
   display: none;
   @media screen and (max-width: ${styles.breakpoints.md}) {
     display: block;
-    font-size: 1.2rem;
     position: ${props => props.position};
-    right: 1.3rem;
-    bottom: .5rem;
-    cursor: pointer;
-    color: ${colors.titleColor};
-    &:hover {
-		  color: ${colors.titleAlternativeColor};
-	  }
   }
 `;
 
-type Props = {
-  isHide: boolean;
-}
-
-export const NavMenu = styled.div<Props>`
+export const NavMenu = styled.div<{ isHide: boolean }>`
   background-color: ${colors.containerColor};
   transition: all 0.5s ease;
   @media screen and (max-width: ${styles.breakpoints.md}) {
     position: fixed;
-    bottom: ${(props) => props.isHide ? '-100%' : 0};
+    bottom: ${(props) => props.isHide ? 0 : '-100%'};
     left: 0;
     width: 100%;
     background-color: ${colors.bodyColor};
