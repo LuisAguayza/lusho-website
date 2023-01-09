@@ -1,8 +1,8 @@
-import { Button, Container, Typography } from "components-styled";
+import { Container } from "components-styled";
+import { HeaderLayout } from "components/header/header.component";
+import { Home } from "components/home";
 import { useLanguage } from "language";
-import { FormattedMessage } from "react-intl";
 import { useTheme } from "./theme";
-import { HeaderLayout } from "components/header";
 
 function App() {
 
@@ -12,6 +12,7 @@ function App() {
   return (
     <Container>
       <HeaderLayout />
+      <Home />
     </Container>
   )
 }
