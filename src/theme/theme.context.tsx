@@ -1,7 +1,10 @@
-import { createContext, FC, PropsWithChildren, useCallback, useContext, useEffect, useReducer } from "react";
+import { createContext, FC, PropsWithChildren, useContext, useEffect, useReducer } from "react";
 import { ThemeProvider } from "styled-components";
 import { ThemeContextType, themeReducer, ThemeState } from ".";
 import { useStorage } from "../hooks";
+
+export const DARK_THEME_STATE = 'dark';
+export const LIGHT_THEME_STATE = 'light';
 
 export const ThemeContext = createContext({} as ThemeContextType);
 
@@ -11,7 +14,7 @@ export const CustomThemeProvider: FC<PropsWithChildren> = ({ children }) => {
 
   const { setStorage, stateStorage } = useStorage<ThemeState>({
     key: 'theme', 
-    payload: isLightSystemTheme ? { mode: 'light' } : { mode: 'dark' }
+    payload: isLightSystemTheme ? { mode: LIGHT_THEME_STATE } : { mode: DARK_THEME_STATE }
   });
   
   const [state, dispatch] = useReducer(themeReducer, stateStorage);

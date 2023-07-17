@@ -9,4 +9,4 @@ export const useLayout = () => {
 		isHide,
 		toggleHide
 	}
-}
+};
