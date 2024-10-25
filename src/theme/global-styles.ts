@@ -1,6 +1,5 @@
 import { createGlobalStyle } from "styled-components";
-import { styles } from './theme.styles';
-import * as config from './theme.config';
+
 
 // title: `${config.titleColor}`,
 //     titleAlternative: `${config.titleAlternativeColor}`,
@@ -23,13 +22,13 @@ export default createGlobalStyle`
   button,
   input,
   textarea {
-    font-family: ${styles.typography.bodyFont};
-    font-size: ${styles.typography.normal};
+    font-family: ${({ theme }) => theme.typography.bodyFont};
+    font-size: ${({ theme }) => theme.typography.normal};
   }
 
   body: {
-    background-color: ${config.bodyColor};
-    color: ${config.textColor}
+    background-color: ${({ theme }) => theme.color.body};
+    color: ${({ theme }) => theme.color.text}
   }
 
   a {

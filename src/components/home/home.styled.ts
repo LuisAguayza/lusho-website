@@ -7,3 +7,7 @@ export const Main = styled.main`
 export const Section = styled.section`
 
 `;
+
+export const Grid = styled.div`
+
+`;

@@ -1,4 +1,4 @@
-import { DARK_THEME_STATE, LIGHT_THEME_STATE, ThemeState } from ".";
+import { ThemeState, ThemeStateEnum } from ".";
 
 export type ThemeAction = 
   | { type: 'SWITCH_THEME' }
@@ -10,7 +10,7 @@ export const themeReducer = (state: ThemeState, action: ThemeAction): ThemeState
     case 'SWITCH_THEME':
       return {
         ...state,
-        mode: state.mode === DARK_THEME_STATE ? LIGHT_THEME_STATE : DARK_THEME_STATE
+        mode: state.mode === ThemeStateEnum.DARK ? ThemeStateEnum.LIGHT : ThemeStateEnum.DARK
       };
       
     case 'REHYDRATE':

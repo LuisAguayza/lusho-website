@@ -1,6 +1,16 @@
+import { Social } from "components/home/social"
+import { Grid, Section } from "./home.styled"
+import { Data } from "./data"
 
 export const Home = () => {
 	return (
-		<div>Home</div>
+		<Section>
+      <Grid>
+        <Grid>
+          <Social />
+          <Data />
+        </Grid>
+      </Grid>
+    </Section>
 	)
 }

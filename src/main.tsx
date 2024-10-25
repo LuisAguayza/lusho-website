@@ -7,8 +7,8 @@ import App from './App';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <GlobalStyles />
     <CustomThemeProvider>
+      <GlobalStyles />
       <LanguageProvider>
         <App />
       </LanguageProvider>

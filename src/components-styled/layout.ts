@@ -1,20 +1,19 @@
 import styled from "styled-components";
-import * as colors from "theme";
-import { styles } from "theme";
 
 export const Container = styled.div`
-  background-color: ${colors.containerColor};
-  color: ${colors.textColor};
+  background-color: ${({ theme }) => theme.color.primary};
+  color: ${({ theme }) => theme.color.text};
   transition: all 0.25s ease;
-  margin-right: ${styles.margin.mb3};
-  margin-left: ${styles.margin.mb3};
-  @media screen and (max-width: ${styles.breakpoints.lg}) {
-    margin-right: ${styles.margin.mb15};
-    margin-left: ${styles.margin.mb15};
+  height: 100vh;
+  padding-right: ${({ theme }) => theme.spacing.max};
+  padding-left: ${({ theme }) => theme.spacing.max};
+  @media screen and (max-width: ${({ theme }) => theme.breakpoints.lg}) {
+    padding-right: ${({ theme }) => theme.spacing.medium};
+    padding-left: ${({ theme }) => theme.spacing.medium};
   }
-  @media screen and (max-width: ${styles.breakpoints.xs}) {
-    margin-right: ${styles.margin.mb1};
-    margin-left: ${styles.margin.mb1};
+  @media screen and (max-width: ${({ theme }) => theme.breakpoints.xs}) {
+    padding-right: ${({ theme }) => theme.spacing.light};
+    padding-left: ${({ theme }) => theme.spacing.light};
   }
 `;
 
@@ -26,14 +25,14 @@ export const Button = styled.button`
 
 export const Icon = styled.i`
   display: block;
-  @media screen and (max-width: ${styles.breakpoints.md}) {
+  @media screen and (max-width: ${({ theme }) => theme.breakpoints.md}) {
     font-size: 1.2rem;
     right: 1.3rem;
     bottom: .5rem;
     cursor: pointer;
-    color: ${colors.titleColor};
+    color: ${({ theme }) => theme.color.title};
     &:hover {
-		  color: ${colors.titleAlternativeColor};
+		  color: ${({ theme }) => theme.color.titleAlternative};
 	  }
   }
 `;
@@ -43,10 +42,10 @@ export const Link = styled.a`
   flex-direction: column;
   align-items: center;
 	cursor: pointer;
-  font-size: ${styles.typography.small};
-	font-weight: ${styles.fontWeight.medium};
+  font-size: ${({ theme }) => theme.typography.small};
+	font-weight: ${({ theme }) => theme.fontWeight.medium};
 	transition: .3s;
 	&:hover {
-		color: ${colors.titleAlternativeColor};
+		color: ${({ theme }) => theme.color.titleAlternative};
 	}
 `;

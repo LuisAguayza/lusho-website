@@ -1,10 +1,12 @@
-import { createContext, FC, PropsWithChildren, useContext, useEffect, useReducer } from "react";
+import { createContext, FC, PropsWithChildren, useContext, useEffect, useReducer, useState } from "react";
 import { ThemeProvider } from "styled-components";
-import { ThemeContextType, themeReducer, ThemeState } from ".";
+import { DarkTheme, LightTheme, ThemeContextType, themeReducer, ThemeState } from ".";
 import { useStorage } from "../hooks";
 
-export const DARK_THEME_STATE = 'dark';
-export const LIGHT_THEME_STATE = 'light';
+export enum ThemeStateEnum {
+  DARK = 'dark',
+  LIGHT = 'light'
+}
 
 export const ThemeContext = createContext({} as ThemeContextType);
 
@@ -14,7 +16,7 @@ export const CustomThemeProvider: FC<PropsWithChildren> = ({ children }) => {
 
   const { setStorage, stateStorage } = useStorage<ThemeState>({
     key: 'theme', 
-    payload: isLightSystemTheme ? { mode: LIGHT_THEME_STATE } : { mode: DARK_THEME_STATE }
+    payload: isLightSystemTheme ? { mode: ThemeStateEnum.LIGHT } : { mode: ThemeStateEnum.DARK }
   });
   
   const [state, dispatch] = useReducer(themeReducer, stateStorage);
@@ -32,7 +34,7 @@ export const CustomThemeProvider: FC<PropsWithChildren> = ({ children }) => {
         toggleTheme
       }}
     >
-      <ThemeProvider theme={{ mode: state.mode }}>
+      <ThemeProvider theme={state.mode === ThemeStateEnum.LIGHT ? LightTheme : DarkTheme}>
         {children}
       </ThemeProvider>
     </ThemeContext.Provider>

@@ -1,9 +1,5 @@
-export const styles = {
-  headerHeight: `3rem`,
-  color: {
-    hue: 0,
-    sat: '0%',
-  },
+import { DefaultTheme } from "styled-components";
+const theme: Omit<DefaultTheme, 'color'> = {
   typography: {
     bodyFont: `'Poppins', sans-serif`,
     bigSize: '3.5rem',
@@ -29,15 +25,10 @@ export const styles = {
     medium: 500,
     semiBold: 600
   },
-  margin: {
-    mb025: '0.25rem',
-    mb05: '0.5rem',
-    mb075: '0.75rem',
-    mb1: '1rem',
-    mb15: '1.5rem',
-    mb2: '2rem',
-    mb25: '2.5rem',
-    mb3: '3rem'
+  spacing: {
+    light: '1rem',
+    medium: '1.5rem',
+    max: '3rem'
   },
   zIndex: {
     tooltip: 10,
@@ -51,3 +42,27 @@ export const styles = {
     xs: '350px',
   }
 }
+
+export const LightTheme: DefaultTheme = {
+  ...theme,
+  color: {
+    primary: '#fff',
+    secondary: '',
+    body: 'hsl(0, 0%, 98%)',
+    text: 'hsl(0, 0%, 46%)',
+    title: 'hsl(0, 0%, 20%)',
+    titleAlternative: 'red'
+  },
+}
+
+export const DarkTheme: DefaultTheme = {
+  ...theme,
+  color: {
+    primary: '#242424',
+    secondary: '',
+    body: 'hsl(0, 0%, 2%)',
+    text: 'hsl(0, 0%, 96%)',
+    title: 'hsl(0, 0%, 100%)',
+    titleAlternative: 'hsl(0, 0%, 80%)'
+  },
+} 
