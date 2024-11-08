@@ -28,7 +28,7 @@ export const Nav = styled(Container)`
 export const NavLogo = styled(Nav)`
 	color: ${({ theme }) => theme.color.title};
 	font-weight: ${({ theme }) => theme.fontWeight.medium};
-  padding-left: 0
+  padding-left: 0;
 `;
 
 export const List = styled.ul`
@@ -49,7 +49,7 @@ export const List = styled.ul`
 
 export const ListItem = styled.li`
   /* background-color: ${({ theme }) => theme.color.primary}; */
-  transition: all 0.25s ease;
+  transition: all .5s linear;
 `;
 
 export const IconHeader = styled(Icon)<{ position?: 'absolute' }>`
@@ -62,7 +62,7 @@ export const IconHeader = styled(Icon)<{ position?: 'absolute' }>`
 
 export const NavMenu = styled.div<{ isHide: boolean }>`
   background-color: ${({ theme }) => theme.color.primary};
-  transition: all 0.5s ease;
+  transition: all .5s linear;
   @media screen and (max-width: ${({ theme }) => theme.breakpoints.md}) {
     position: fixed;
     bottom: ${(props) => props.isHide ? 0 : '-100%'};
@@ -72,7 +72,7 @@ export const NavMenu = styled.div<{ isHide: boolean }>`
     padding: 2rem 1.5rem 4rem;
     box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.15);
     border-radius: 1.5rem 1.5rem 0 0;
-    transition: .5s;
+    transition: all .5s linear;
   };
   @media screen and (max-width: ${({ theme }) => theme.breakpoints.xs}) {
     padding: 2rem 0.25rem 4rem;

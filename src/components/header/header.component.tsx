@@ -1,24 +1,27 @@
 import { Link } from 'components-styled';
 import { Header, IconHeader, List, ListItem, Nav, NavLogo, NavMenu } from 'components/header';
-import { useLayout } from 'hooks';
+import { useState } from 'react';
 
 export const HeaderLayout = () => {
 
-	const { isHide, toggleHide } = useLayout();
+	const [isHide, setIsHide] = useState(false);
+	const toggleHide = () => setIsHide(prev => !prev);
 
 	return (
 		<Header>
 			<Nav>
-				<NavLogo>Lusho</NavLogo>
+				<NavLogo>
+          {`Lusho`}
+        </NavLogo>
 				<NavMenu isHide={isHide}>
 					<List>
 						<ListItem>
-							<Link>
+				 			<Link>
 								<IconHeader className='uil uil-estate' />
 								Home
 							</Link>
 						</ListItem>
-						<ListItem>
+						{/* <ListItem>
 							<Link>
 								<IconHeader className='uil uil-estate'/>
 								Home
@@ -41,7 +44,7 @@ export const HeaderLayout = () => {
 								<IconHeader className='uil uil-estate'></IconHeader>
 								Home
 							</Link>
-						</ListItem>
+						</ListItem> */}
 					</List>
 				</NavMenu>
 				<IconHeader

@@ -1,4 +1,4 @@
-import { Container } from "components-styled";
+import { Button, Container } from "components-styled";
 import { HeaderLayout } from "components/header/header.component";
 import { Home } from "components/home";
 import { Main } from "components/home/home.styled";
@@ -15,6 +15,7 @@ function App() {
       <HeaderLayout />
       <Main>
         <Home />
+        <Button onClick={toggleTheme}>Change theme</Button>
       </Main>
     </Container>
   )

@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Container = styled.div`
   background-color: ${({ theme }) => theme.color.primary};
   color: ${({ theme }) => theme.color.text};
-  transition: all 0.25s ease;
+  transition: all .5s linear;
   height: 100vh;
   padding-right: ${({ theme }) => theme.spacing.max};
   padding-left: ${({ theme }) => theme.spacing.max};
@@ -21,10 +21,26 @@ export const Button = styled.button`
   border: none;
   outline: none;
   cursor: pointer;
+
+  background-color: ${({ theme }) => theme.color.titleAlternative};
+  border-radius: 8px;
+  border-style: none;
+  box-sizing: border-box;
+  color: ${({ theme }) => theme.color.primary};
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 14px;
+  height: 37px;
+  list-style: none;
+  margin: 0;
+  padding: 10px 16px;
+  text-decoration: none;
+  transition: color 100ms;    
 `;
 
 export const Icon = styled.i`
   display: block;
+  transition: all .5s linear;
   @media screen and (max-width: ${({ theme }) => theme.breakpoints.md}) {
     font-size: 1.2rem;
     right: 1.3rem;
@@ -44,7 +60,7 @@ export const Link = styled.a`
 	cursor: pointer;
   font-size: ${({ theme }) => theme.typography.small};
 	font-weight: ${({ theme }) => theme.fontWeight.medium};
-	transition: .3s;
+	transition: all .5s linear;
 	&:hover {
 		color: ${({ theme }) => theme.color.titleAlternative};
 	}

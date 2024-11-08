@@ -51,7 +51,7 @@ export const LightTheme: DefaultTheme = {
     body: 'hsl(0, 0%, 98%)',
     text: 'hsl(0, 0%, 46%)',
     title: 'hsl(0, 0%, 20%)',
-    titleAlternative: 'red'
+    titleAlternative: '#242424'
   },
 }
 
