@@ -1,6 +1,6 @@
 import { useStorage } from "hooks";
-import { createContext, FC, PropsWithChildren, useCallback, useContext, useEffect, useReducer } from "react";
-import { IntlProvider } from 'react-intl';
+import { createContext, FC, PropsWithChildren, useContext, useEffect, useReducer } from "react";
+// import { IntlProvider } from 'react-intl';
 import { defaultLocale, LanguageContextType, LanguageState, localeMessages, reducer } from ".";
 
 const LanguageContext = createContext({} as LanguageContextType);
@@ -20,10 +20,6 @@ export const LanguageProvider: FC<PropsWithChildren> = ({ children }) => {
 
 	const changeLanguage = () => dispatch({ type: 'SWITCH_LANGUAGE' });
 
-	useEffect(() => {
-		setStorage(state);
-	}, [state]);
-
 	return (
 		<LanguageContext.Provider
 			value={{
@@ -31,9 +27,9 @@ export const LanguageProvider: FC<PropsWithChildren> = ({ children }) => {
 				changeLanguage
 			}}
 		>
-			<IntlProvider locale={state.locale} messages={localeMessages[state.locale]}>
-				{children}
-			</IntlProvider>
+			{/* <IntlProvider locale={state.locale} messages={localeMessages[state.locale]}>
+			</IntlProvider> */}
+      {children}
 		</LanguageContext.Provider>
 	);
 };

@@ -1,6 +1,26 @@
 import 'styled-components';
 
 declare module 'styled-components' {
+
+  export type Direction = 'row' | 'column';
+
+  const xs = 'xs';
+  const sm = 'sm';
+  const md = 'md';
+  const lg = 'lg';
+  const xl = 'xl';
+  
+  export type Breakpoint = {
+    [xs]: string;
+    [sm]: string,
+    [md]: string,
+    [lg]: string,
+    [xl]: string,
+  }
+
+  export type BreakpoinyKey = keyof Breakpoint;
+
+  export type Responsive<T> = T | Partial<Record<BreakpoinyKey, T>>;
   export interface DefaultTheme {
     color: {
       primary: string;
@@ -35,21 +55,12 @@ declare module 'styled-components' {
       medium: number,
       semiBold: number,
     },
-    spacing: {
-      light: string,
-      medium: string,
-      max: string,
-    },
+    spacing: Breakpoint,
     zIndex: {
       tooltip: number,
       fixed: number,
       modal: number
     },
-    breakpoints: {
-      lg: string,
-      md: string,
-      sm: string,
-      xs: string,
-    }
+    breakpoints: Breakpoint
   }
 }

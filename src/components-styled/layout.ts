@@ -3,17 +3,17 @@ import styled from "styled-components";
 export const Container = styled.div`
   background-color: ${({ theme }) => theme.color.primary};
   color: ${({ theme }) => theme.color.text};
-  transition: all .5s linear;
+  transition: all .2s linear;
   height: 100vh;
-  padding-right: ${({ theme }) => theme.spacing.max};
-  padding-left: ${({ theme }) => theme.spacing.max};
+  padding-right: ${({ theme }) => theme.spacing.lg};
+  padding-left: ${({ theme }) => theme.spacing.lg};
   @media screen and (max-width: ${({ theme }) => theme.breakpoints.lg}) {
-    padding-right: ${({ theme }) => theme.spacing.medium};
-    padding-left: ${({ theme }) => theme.spacing.medium};
+    padding-right: ${({ theme }) => theme.spacing.md};
+    padding-left: ${({ theme }) => theme.spacing.md};
   }
   @media screen and (max-width: ${({ theme }) => theme.breakpoints.xs}) {
-    padding-right: ${({ theme }) => theme.spacing.light};
-    padding-left: ${({ theme }) => theme.spacing.light};
+    padding-right: ${({ theme }) => theme.spacing.sm};
+    padding-left: ${({ theme }) => theme.spacing.sm};
   }
 `;
 
@@ -40,7 +40,7 @@ export const Button = styled.button`
 
 export const Icon = styled.i`
   display: block;
-  transition: all .5s linear;
+  transition: all .2s linear;
   @media screen and (max-width: ${({ theme }) => theme.breakpoints.md}) {
     font-size: 1.2rem;
     right: 1.3rem;
@@ -60,7 +60,7 @@ export const Link = styled.a`
 	cursor: pointer;
   font-size: ${({ theme }) => theme.typography.small};
 	font-weight: ${({ theme }) => theme.fontWeight.medium};
-	transition: all .5s linear;
+	transition: all .2s linear;
 	&:hover {
 		color: ${({ theme }) => theme.color.titleAlternative};
 	}

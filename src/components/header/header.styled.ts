@@ -15,13 +15,13 @@ export const Header = styled.header`
 `;
 
 export const Nav = styled(Container)`
-  height: calc(${({theme}) => theme.spacing.max} + 1.5rem);
+  height: calc(${({theme}) => theme.spacing.lg} + 1.5rem);
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	column-gap: 1rem;
   @media screen and (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    height: ${({theme}) => theme.spacing.max} 
+    height: ${({theme}) => theme.spacing.lg} 
   }
 `;
 
@@ -52,7 +52,9 @@ export const ListItem = styled.li`
   transition: all .5s linear;
 `;
 
-export const IconHeader = styled(Icon)<{ position?: 'absolute' }>`
+export const IconHeader = styled(Icon).withConfig({
+  shouldForwardProp: prop => prop !== 'position'
+})<{ position?: 'absolute' }>`
   display: none;
   @media screen and (max-width: ${({ theme }) => theme.breakpoints.md}) {
     display: block;
@@ -60,7 +62,9 @@ export const IconHeader = styled(Icon)<{ position?: 'absolute' }>`
   }
 `;
 
-export const NavMenu = styled.div<{ isHide: boolean }>`
+export const NavMenu = styled.div.withConfig({
+  shouldForwardProp: prop => prop !== 'isHide'
+})<{ isHide: boolean }>`
   background-color: ${({ theme }) => theme.color.primary};
   transition: all .5s linear;
   @media screen and (max-width: ${({ theme }) => theme.breakpoints.md}) {

@@ -17,7 +17,7 @@ export const HeaderLayout = () => {
 					<List>
 						<ListItem>
 				 			<Link>
-								<IconHeader className='uil uil-estate' />
+								<IconHeader />
 								Home
 							</Link>
 						</ListItem>

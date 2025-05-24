@@ -26,9 +26,11 @@ const theme: Omit<DefaultTheme, 'color'> = {
     semiBold: 600
   },
   spacing: {
-    light: '1rem',
-    medium: '1.5rem',
-    max: '3rem'
+    xs: '0.5rem',
+    sm: '1rem',
+    md: '1.5rem',
+    lg: '2rem',
+    xl: '3rem',
   },
   zIndex: {
     tooltip: 10,
@@ -36,6 +38,7 @@ const theme: Omit<DefaultTheme, 'color'> = {
     modal: 1000
   },
   breakpoints: {
+    xl: '1200px',
     lg: '992px',
     md: '768px',
     sm: '576px',

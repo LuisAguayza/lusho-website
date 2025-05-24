@@ -1,28 +1,32 @@
+import { useState } from "react";
+
 type Props<T> = {
-  key: string,
-  payload: T
+  key: string;
+  payload: T;
 };
 
 type Response<T> = {
-  stateStorage: T,
-  setStorage: (data: T) => void
+  stateStorage: T;
+  setStorage: (data: T) => void;
 };
 
 export const useStorage = <T>({ key, payload }: Props<T>): Response<T> => {
+  const [stateStorage, setStateStorage] = useState<T>(() => {
+    try {
+      const value = localStorage.getItem(key);
+      return value ? JSON.parse(value) : payload;
+    } catch {
+      return payload;
+    }
+  });
 
-  let stateStorage: T;
-  let value = localStorage.getItem(key); 
-
-  try {
-    stateStorage = value ? JSON.parse(value) as T : payload;
-  } catch {
-    stateStorage = payload;
-  }
-
-  const setStorage = (value: T) => localStorage.setItem(key, JSON.stringify(value));
+  const setStorage = (data: T) => {
+    setStateStorage(data);
+    localStorage.setItem(key, JSON.stringify(data));
+  };
 
   return {
-    stateStorage, 
-    setStorage
+    stateStorage,
+    setStorage,
   };
 };
