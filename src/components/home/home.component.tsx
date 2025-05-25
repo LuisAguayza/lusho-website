@@ -1,6 +1,6 @@
-import { Grid } from "components-styled"
+import { Grid, Img } from "components-styled"
 import { Data } from "./data"
-import { HomeContainer, Img, ProfileWrapper } from "./home.styled"
+import { HomeContainer, ProfileWrapper } from "./home.styled"
 import { Social } from "./social"
 
 export const Home = () => {
@@ -8,12 +8,11 @@ export const Home = () => {
 		<HomeContainer id='home'>
       <Grid
         container
-        spacing={{ sm: 'sm', xl: 'xl' }}
+        spacing={{ sm: 'md', lg: 'lg' }}
         direction={{ sm: 'column', md: 'row' }}
       >
         <Grid
           item
-          spacing='sm'
           col={{ sm: 12, md: 1 }}
           direction={{ sm: 'row', lg: 'column' }}
           style={{

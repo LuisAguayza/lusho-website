@@ -4,11 +4,11 @@ declare module 'styled-components' {
 
   export type Direction = 'row' | 'column';
 
-  const xs = 'xs';
-  const sm = 'sm';
-  const md = 'md';
-  const lg = 'lg';
-  const xl = 'xl';
+  const xs = 'xs' as const;
+  const sm = 'sm' as const;
+  const md = 'md' as const;
+  const lg = 'lg' as const;
+  const xl = 'xl' as const;
   
   export type Breakpoint = {
     [xs]: string;
@@ -16,6 +16,14 @@ declare module 'styled-components' {
     [md]: string,
     [lg]: string,
     [xl]: string,
+  }
+
+  export type BreakpointBoolean = {
+    [xs]?: boolean;
+    [sm]?: boolean,
+    [md]?: boolean,
+    [lg]?: boolean,
+    [xl]?: boolean,
   }
 
   export type BreakpoinyKey = keyof Breakpoint;

@@ -1,4 +1,5 @@
 import styled, { BreakpoinyKey, Breakpoint, css, Direction, Responsive } from 'styled-components';
+import { breakpoints, resolveResponsive } from 'theme';
 
 const TOTAL_COLS = 12;
 
@@ -19,44 +20,9 @@ const gridProps: GridPropKey[] = [
   'col'
 ];
 
-type BreakpointKeyType = keyof Breakpoint;
-const breakpoints: BreakpointKeyType[] = ['xs', 'sm', 'md', 'lg', 'xl'];
-
-const resolveResponsive = <T,>(
-  prop: Responsive<T> | T | undefined,
-  cb: (value: T, breakpoint?: BreakpoinyKey) => ReturnType<typeof css>
-) => {
-  if (!prop) return '';
-
-  if (typeof prop !== 'object' || prop === null) {
-    return cb(prop as T);
-  }
-
-  const isBreakpointRecord = (obj: any): obj is Partial<Record<BreakpoinyKey, T>> =>
-    breakpoints.some(key => Object.prototype.hasOwnProperty.call(obj, key));
-
-  if (!isBreakpointRecord(prop)) {
-    return cb(prop as T);
-  }
-
-  return css`
-    ${prop.sm !== undefined && css`${cb(prop.sm, 'sm')}`}
-    ${prop.md !== undefined && css`
-      @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
-        ${cb(prop.md, 'md')}
-      }
-    `}
-    ${prop.lg !== undefined && css`
-      @media (min-width: ${({ theme }) => theme.breakpoints.lg}) {
-        ${cb(prop.lg, 'lg')}
-      }
-    `}
-  `;
-};
-
 export const Grid = styled.div
   .withConfig({
-    shouldForwardProp: prop => !gridProps.includes(prop as keyof GridProps)
+    shouldForwardProp: prop => !gridProps.includes(prop as GridPropKey)
   })<GridProps>`
   box-sizing: border-box;
 
@@ -109,7 +75,6 @@ export const Grid = styled.div
     const cssRule = dir === 'column'
       ? css`row-gap: ${spacingValue};`
       : css`column-gap: ${spacingValue};`;
-    // css`${cssRule}`;
 
     if (bp === 'xs') return css`
       @media (min-width: ${theme.breakpoints.xs}) {

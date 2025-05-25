@@ -1,25 +1,9 @@
+import { SectionContainer } from 'components-styled';
 import styled from 'styled-components';
 
-export const Section = styled.section`
-
-`;
-
-export const HomeContainer = styled.div`
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  max-width: ${({ theme }) => theme.breakpoints.xl};
-  margin-inline: auto;
-  
+export const HomeContainer = styled(SectionContainer)`
   @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
-    padding-top: 100px;
-    padding-inline: ${({ theme }) => theme.spacing.md};
-  }
-
-  @media (min-width: ${({ theme }) => theme.breakpoints.lg}) {
-    padding-inline: ${({ theme }) => theme.spacing.lg};
+    padding-top: calc(${({theme}) => theme.spacing.xs} + 6rem);
   }
 `;
 
@@ -52,12 +36,6 @@ export const ProfileWrapperSquare = styled.div`
   @media (max-width: 768px) {
     display: none
   }
-`;
-
-export const Img = styled.img`
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
 `;
 
 

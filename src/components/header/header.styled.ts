@@ -7,7 +7,7 @@ export const Header = styled.header`
   top: 0;
   left: 0;
   z-index: ${({ theme }) => theme.zIndex.fixed};
-  background-color: ${({ theme }) => theme.color.body};
+  background-color: ${({ theme }) => theme.color.card};
   @media screen and (max-width: ${({ theme }) => theme.breakpoints.md}) {
     top: initial;
     bottom: 0;
@@ -15,13 +15,13 @@ export const Header = styled.header`
 `;
 
 export const Nav = styled(Main)`
-  height: calc(${({theme}) => theme.spacing.lg} + 1.5rem);
+  height: calc(${({theme}) => theme.spacing.lg} + 2rem);
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	column-gap: 1rem;
   @media screen and (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    height: ${({theme}) => theme.spacing.lg} 
+    transition: all 1s all;
   }
 `;
 
@@ -58,6 +58,13 @@ export const IconHeader = styled(Icon).withConfig({
   @media screen and (max-width: ${({ theme }) => theme.breakpoints.md}) {
     display: block;
     position: ${props => props.position};
+    right: 1.3rem;
+    bottom: .5rem;
+    cursor: pointer;
+    color: ${({ theme }) => theme.color.title};
+    &:hover {
+		  color: ${({ theme }) => theme.color.titleAlternative};
+	  }
   }
 `;
 

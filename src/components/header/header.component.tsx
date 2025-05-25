@@ -27,13 +27,13 @@ export const HeaderLayout = () => {
 								About
 							</Link>
 						</ListItem>
-						{/* 
 						<ListItem>
-							<Link>
-								<IconHeader className='uil uil-estate'></IconHeader>
-								Home
+							<Link href='#skills'>
+								<IconHeader></IconHeader>
+								Skills
 							</Link>
-						</ListItem>
+            </ListItem>
+						{/* 
 						<ListItem>
 							<Link>
 								<IconHeader className='uil uil-estate'></IconHeader>

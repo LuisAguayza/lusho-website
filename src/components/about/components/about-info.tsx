@@ -1,21 +1,22 @@
 import { Body1, Card, CardTitle, Div, Grid, Icon } from "components-styled"
 
 
+const currentYear = new Date().getFullYear();
 
 const info = [
   {
     title: 'Experience',
-    description: '3+ years',
+    description: `${currentYear - 2021}+ years`,
     icon: 'uil uil-bag'
   },
   {
     title: 'Frontend',
-    description: '3+ years',
+    description: 'Javascript, React',
     icon: 'uil uil-brackets-curly'
   },
   {
     title: 'Backend',
-    description: '3+ years',
+    description: 'C#, .Net',
     icon: 'uil uil-lock'
   },
 ]
@@ -30,9 +31,7 @@ export const AboutInfo = () => {
         <Body1>
           Frontend with experience in designing and building scalable web applications using React and TypeScript. Specialized in
           developing modular, high-performance user interfaces with a strong focus on maintainability, accessibility, and modern UI/UX
-          principles. Experienced in leading frontend development within agile teams, ensuring smooth integration with backend systems,
-          optimizing UI performance, and implementing responsive design solutions. Skilled in modern, responsive web design with a focus
-          on user experience (UX).
+          principles.
         </Body1>
       </Grid>
     </Grid>

@@ -1,8 +1,9 @@
-import { Button, Main, Container } from "components-styled";
+import { Main, Container, Button } from "components-styled";
 import { HeaderLayout } from "components/header/header.component";
 import { Home } from "components/home";
 import { useTheme } from "./theme";
 import { About } from "components/about";
+import { Skills } from "components/skills";
 
 function App() {
 
@@ -15,7 +16,8 @@ function App() {
       <Container>
         <Home />
         <About />
-        {/* <Button onClick={toggleTheme}>Change theme</Button> */}
+        <Skills />
+        <Button onClick={toggleTheme}>Change theme</Button>
       </Container>
     </Main>
   )

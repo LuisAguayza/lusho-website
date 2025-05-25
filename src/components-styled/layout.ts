@@ -4,8 +4,12 @@ export const Container = styled.main`
   display: flex;
   flex-direction: column;
   padding-block: calc(${({theme}) => theme.spacing.lg} + 2rem);
-  @media screen and (max-width: ${({ theme }) => theme.breakpoints.lg}) {
-    padding-top: ${({ theme }) => theme.spacing.md};
+  @media screen and (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    padding-top: ${({ theme }) => theme.spacing.lg};
+  }
+
+  @media screen and (max-width: ${({ theme }) => theme.breakpoints.xs}) {
+    padding-top: 0;
   }
 `;
 
@@ -31,54 +35,28 @@ export const SectionContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-
+  flex-direction: column;
   max-width: ${({ theme }) => theme.breakpoints.xl};
   margin-inline: auto;
   
   @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
-    padding-top: 100px;
+    padding-top: ${({ theme }) => theme.spacing.lg};
     padding-inline: ${({ theme }) => theme.spacing.md};
   }
 
-  @media (min-width: ${({ theme }) => theme.breakpoints.lg}) {
-    padding-inline: ${({ theme }) => theme.spacing.lg};
+  @media (min-width: ${({ theme }) => theme.breakpoints.xs}) {
+    padding-block: calc(${({theme}) => theme.spacing.xs});
   }
 `;
 
-
-export const Button = styled.button`
-  border: none;
-  outline: none;
-  cursor: pointer;
-
-  background-color: ${({ theme }) => theme.color.titleAlternative};
-  border-radius: 8px;
-  border-style: none;
-  box-sizing: border-box;
-  color: ${({ theme }) => theme.color.primary};
-  cursor: pointer;
-  font-family: inherit;
-  font-size: 14px;
-  height: 37px;
-  list-style: none;
-  margin: 0;
-  padding: 10px 16px;
-  text-decoration: none;
-  transition: color 100ms;    
+export const Img = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 `;
 
 export const Icon = styled.i`
-  display: block;
-  font-size: 1.5rem;
-  @media screen and (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    right: 1.3rem;
-    bottom: .5rem;
-    cursor: pointer;
-    color: ${({ theme }) => theme.color.title};
-    &:hover {
-		  color: ${({ theme }) => theme.color.titleAlternative};
-	  }
-  }
+  font-size: 1.6rem;
 `;
 
 export const Link = styled.a`
@@ -111,7 +89,7 @@ export const Card = styled.div`
   gap: 1rem;
 
   &:hover {
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 0 1px ${({ theme }) => theme.color.titleAlternative};
     transform: translateY(-2px);
   }
 
