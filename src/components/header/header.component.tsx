@@ -16,17 +16,18 @@ export const HeaderLayout = () => {
 				<NavMenu isHide={isHide}>
 					<List>
 						<ListItem>
-				 			<Link>
+				 			<Link href='#home'>
 								<IconHeader />
 								Home
 							</Link>
 						</ListItem>
-						{/* <ListItem>
-							<Link>
-								<IconHeader className='uil uil-estate'/>
-								Home
+            <ListItem>
+							<Link href='#about'>
+								<IconHeader />
+								About
 							</Link>
 						</ListItem>
+						{/* 
 						<ListItem>
 							<Link>
 								<IconHeader className='uil uil-estate'></IconHeader>

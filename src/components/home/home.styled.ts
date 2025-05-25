@@ -1,23 +1,20 @@
 import styled from 'styled-components';
 
-export const Main = styled.main`
-  margin-top: calc(${({theme}) => theme.spacing.lg} + 1.5rem);
-  @media screen and (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    margin-top: 0;
-  }
-`;
-
 export const Section = styled.section`
 
 `;
 
-export const Container = styled.div`
+export const HomeContainer = styled.div`
   width: 100%;
-  max-width: 1200px;
-  margin-inline: auto;
-  padding-inline: ${({ theme }) => theme.spacing.sm};
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
+  max-width: ${({ theme }) => theme.breakpoints.xl};
+  margin-inline: auto;
+  
   @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
+    padding-top: 100px;
     padding-inline: ${({ theme }) => theme.spacing.md};
   }
 
@@ -25,3 +22,42 @@ export const Container = styled.div`
     padding-inline: ${({ theme }) => theme.spacing.lg};
   }
 `;
+
+export const ProfileWrapper = styled.div`
+  width: 250px;
+  height: 250px;
+  border: 5px solid ${({ theme }) => theme.color.secondary};
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @media (max-width: 768px) {
+    width: 180px;
+    height: 180px;
+  }
+`;
+
+export const ProfileWrapperSquare = styled.div`
+  width: 'auto';
+  height: '100%';
+  border: 5px solid ${({ theme }) => theme.color.secondary};
+  border-radius: 5%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @media (max-width: 768px) {
+    display: none
+  }
+`;
+
+export const Img = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+`;
+
+

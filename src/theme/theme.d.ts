@@ -29,6 +29,7 @@ declare module 'styled-components' {
       titleAlternative: string;
       text: string;
       body: string;
+      card: string;
     },
     typography: {
       bodyFont: string;

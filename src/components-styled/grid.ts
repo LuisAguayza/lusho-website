@@ -20,13 +20,7 @@ const gridProps: GridPropKey[] = [
 ];
 
 type BreakpointKeyType = keyof Breakpoint;
-const breakpoints: BreakpointKeyType[] = [
-  'xs',
-  'sm',
-  'md',
-  'lg',
-  'xl',
-];
+const breakpoints: BreakpointKeyType[] = ['xs', 'sm', 'md', 'lg', 'xl'];
 
 const resolveResponsive = <T,>(
   prop: Responsive<T> | T | undefined,
@@ -38,7 +32,6 @@ const resolveResponsive = <T,>(
     return cb(prop as T);
   }
 
-  // Type guard to check if prop is a Record<Breakpoint, T>
   const isBreakpointRecord = (obj: any): obj is Partial<Record<BreakpoinyKey, T>> =>
     breakpoints.some(key => Object.prototype.hasOwnProperty.call(obj, key));
 
@@ -47,9 +40,7 @@ const resolveResponsive = <T,>(
   }
 
   return css`
-    ${prop.sm !== undefined && css`
-      ${cb(prop.sm, 'sm')}
-    `}
+    ${prop.sm !== undefined && css`${cb(prop.sm, 'sm')}`}
     ${prop.md !== undefined && css`
       @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
         ${cb(prop.md, 'md')}
@@ -64,10 +55,9 @@ const resolveResponsive = <T,>(
 };
 
 export const Grid = styled.div
-.withConfig({
-  shouldForwardProp: prop => !gridProps.includes(prop as keyof GridProps)
-})
-<GridProps>`
+  .withConfig({
+    shouldForwardProp: prop => !gridProps.includes(prop as keyof GridProps)
+  })<GridProps>`
   box-sizing: border-box;
 
   ${({ container }) =>
@@ -106,4 +96,48 @@ export const Grid = styled.div
       display: flex;
       flex-direction: ${dir};
     `)}
+
+  ${({ item, spacing = 'sm', direction = 'row', theme }) =>
+  item &&
+  breakpoints.map((bp) => {
+    const dir = typeof direction === 'object' ? direction[bp] : direction;
+    const sp = typeof spacing === 'object' ? spacing[bp] : spacing;
+
+    if (!dir || !sp || !theme.spacing[sp as keyof typeof theme.spacing]) return null;
+
+    const spacingValue = theme.spacing[sp as keyof typeof theme.spacing];
+    const cssRule = dir === 'column'
+      ? css`row-gap: ${spacingValue};`
+      : css`column-gap: ${spacingValue};`;
+    // css`${cssRule}`;
+
+    if (bp === 'xs') return css`
+      @media (min-width: ${theme.breakpoints.xs}) {
+        ${cssRule}
+      }
+    `;
+
+    if (bp === 'sm') return css`
+      @media (min-width: ${theme.breakpoints.sm}) {
+        ${cssRule}
+      }
+    `;
+
+    if (bp === 'md') return css`
+      @media (min-width: ${theme.breakpoints.md}) {
+        ${cssRule}
+      }
+    `;
+    if (bp === 'lg') return css`
+      @media (min-width: ${theme.breakpoints.lg}) {
+        ${cssRule}
+      }
+    `;
+    if (bp === 'xl') return css`
+      @media (min-width: ${theme.breakpoints.xl}) {
+        ${cssRule}
+      }
+    `;
+    return null;
+  })}
 `;

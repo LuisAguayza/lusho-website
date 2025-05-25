@@ -54,7 +54,8 @@ export const LightTheme: DefaultTheme = {
     body: 'hsl(0, 0%, 98%)',
     text: 'hsl(0, 0%, 46%)',
     title: 'hsl(0, 0%, 20%)',
-    titleAlternative: '#242424'
+    titleAlternative: '#242424',
+    card: 'hsl(0, 0.00%, 44.70%)'
   },
 }
 
@@ -64,8 +65,9 @@ export const DarkTheme: DefaultTheme = {
     primary: '#242424',
     secondary: '',
     body: 'hsl(0, 0%, 2%)',
-    text: 'hsl(0, 0%, 96%)',
+    text: 'hsla(0, 0.00%, 96.10%, 0.76)',
     title: 'hsl(0, 0%, 100%)',
-    titleAlternative: 'hsl(0, 0%, 80%)'
+    titleAlternative: 'hsl(0, 0%, 80%)',
+    card: 'hsl(0, 0%, 46%)'
   },
 } 

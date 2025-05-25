@@ -4,16 +4,17 @@ export default createGlobalStyle`
   body {
     margin: 0;
   }
-
+  
   *, *::before, *::after {
     box-sizing: border-box;
+    transition: all 0.2s linear;
   }
-
+  
   a {
     text-decoration: none;
     color: inherit;
   }
-
+  
   body,
   button,
   input,

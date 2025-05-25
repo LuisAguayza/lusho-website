@@ -1,4 +1,4 @@
-import { Container, Icon } from "components-styled";
+import { Main, Icon } from "components-styled";
 import styled from "styled-components";
 
 export const Header = styled.header`
@@ -14,7 +14,7 @@ export const Header = styled.header`
   }
 `;
 
-export const Nav = styled(Container)`
+export const Nav = styled(Main)`
   height: calc(${({theme}) => theme.spacing.lg} + 1.5rem);
 	display: flex;
 	justify-content: space-between;
@@ -49,7 +49,6 @@ export const List = styled.ul`
 
 export const ListItem = styled.li`
   /* background-color: ${({ theme }) => theme.color.primary}; */
-  transition: all .5s linear;
 `;
 
 export const IconHeader = styled(Icon).withConfig({
@@ -66,7 +65,6 @@ export const NavMenu = styled.div.withConfig({
   shouldForwardProp: prop => prop !== 'isHide'
 })<{ isHide: boolean }>`
   background-color: ${({ theme }) => theme.color.primary};
-  transition: all .5s linear;
   @media screen and (max-width: ${({ theme }) => theme.breakpoints.md}) {
     position: fixed;
     bottom: ${(props) => props.isHide ? 0 : '-100%'};
@@ -76,7 +74,7 @@ export const NavMenu = styled.div.withConfig({
     padding: 2rem 1.5rem 4rem;
     box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.15);
     border-radius: 1.5rem 1.5rem 0 0;
-    transition: all .5s linear;
+    /* transition: all .5s linear; */
   };
   @media screen and (max-width: ${({ theme }) => theme.breakpoints.xs}) {
     padding: 2rem 0.25rem 4rem;

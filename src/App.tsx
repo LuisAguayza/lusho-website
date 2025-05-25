@@ -1,8 +1,8 @@
-import { Button, Container } from "components-styled";
+import { Button, Main, Container } from "components-styled";
 import { HeaderLayout } from "components/header/header.component";
 import { Home } from "components/home";
-import { Main } from "components/home/home.styled";
 import { useTheme } from "./theme";
+import { About } from "components/about";
 
 function App() {
 
@@ -10,13 +10,14 @@ function App() {
   // const { changeLanguage } = useLanguage();
 
   return (
-    <Container>
+    <Main>
       <HeaderLayout />
-      <Main>
+      <Container>
         <Home />
-        <Button onClick={toggleTheme}>Change theme</Button>
-      </Main>
-    </Container>
+        <About />
+        {/* <Button onClick={toggleTheme}>Change theme</Button> */}
+      </Container>
+    </Main>
   )
 }
 
