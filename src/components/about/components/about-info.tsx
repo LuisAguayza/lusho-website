@@ -1,4 +1,4 @@
-import { Body1, Card, CardTitle, Div, Grid, Icon } from "components-styled"
+import { Body1, Button, Card, CardTitle, Div, Grid, Icon } from "components-styled"
 
 
 const currentYear = new Date().getFullYear();
@@ -23,7 +23,7 @@ const info = [
 
 export const AboutInfo = () => {
   return (
-    <Grid container style={{ justifyContent: 'space-between' }} spacing={{ md: 'xs', sm: 'xl' }}>
+    <Grid container style={{ justifyContent: 'space-between' }} spacing={{ md: 'sm', xs: 'xs' }}>
       { info.map(({ description, icon, title }) => 
         <CardInfo key={title} description={description} title={title} icon={icon}/>
       )}
@@ -34,15 +34,22 @@ export const AboutInfo = () => {
           principles.
         </Body1>
       </Grid>
+      <Grid item col={12}>
+        <a download href='/src/assets/Luis Aguayza CV.docx.pdf'>
+          <Button fullwidth={{ xs: true, md: false }}>
+            Download CV <Icon style={{ marginLeft: '10px' }} className="uil uil-file-alt"/>
+          </Button>
+        </a>
+      </Grid>
     </Grid>
   )
 }
 
 const CardInfo = ({ description, title, icon }: { title: string; description: string; icon: string; }) => (
-  <Grid item col={{ sm: 12, md: 3.5 }} style={{ textAlign: 'center' }}>
+  <Grid item col={{ sm: 3.5 }} style={{ textAlign: 'center' }}>
     <Card>
       <Div>
-        <Icon className={icon}/>
+        <Icon className={icon} />
         <CardTitle>{title}</CardTitle>
         <Body1>{description}</Body1>
       </Div>

@@ -33,7 +33,7 @@ export const Grid = styled.div
       flex-wrap: wrap;
     `}
 
-  ${({ container, spacing = 'sm', theme }) =>
+  ${({ container, spacing = 'xs', theme }) =>
     container &&
     resolveResponsive(spacing as BreakpoinyKey, (sp: keyof typeof theme.spacing) => css`
       gap: ${theme.spacing[sp]};
@@ -63,7 +63,7 @@ export const Grid = styled.div
       flex-direction: ${dir};
     `)}
 
-  ${({ item, spacing = 'sm', direction = 'row', theme }) =>
+  ${({ item, spacing = 'xs', direction = 'row', theme }) =>
   item &&
   breakpoints.map((bp) => {
     const dir = typeof direction === 'object' ? direction[bp] : direction;

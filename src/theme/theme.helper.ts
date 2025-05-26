@@ -15,12 +15,16 @@ export const resolveResponsive = <T,>(
 
   const isBreakpointRecord = (obj: any): obj is Partial<Record<BreakpoinyKey, T>> =>
     breakpoints.some(key => Object.prototype.hasOwnProperty.call(obj, key));
-
   if (!isBreakpointRecord(prop)) {
     return cb(prop as T);
   }
 
   return css`
+    ${prop.xs !== undefined && css`
+      @media (min-width: ${({ theme }) => theme.breakpoints.xs}) {
+        ${cb(prop.xs, 'xs')}
+      }
+    `}
     ${prop.sm !== undefined && css`${cb(prop.sm, 'sm')}`}
     ${prop.md !== undefined && css`
       @media (min-width: ${({ theme }) => theme.breakpoints.md}) {

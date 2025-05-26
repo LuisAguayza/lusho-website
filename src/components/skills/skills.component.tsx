@@ -1,21 +1,35 @@
-import { CardTitle, Img, SectionContainer, Title } from "components-styled"
+import { CardTitle, SectionContainer, Title } from "components-styled"
 import { Tooltip } from "components-styled/tooltip"
-import { mySkills, TechCard, TechGrid } from "."
+import { CarouselTrack, CarouselWrapper, LogoCard, mySkills, TechCard, TechGrid } from "."
 
 export const Skills = () => {
   return (
     <SectionContainer id='skills'>
       <Title style={{ textAlign: 'center', marginBottom: 0 }}>Skills</Title>
       <CardTitle style={{ textAlign: 'center', marginTop: 1}}>My working stack</CardTitle>
-        <TechGrid>
-        {mySkills.map(({ name, src }) =>
-          <Tooltip label={name}>
+      <CarouselWrapper>
+        <CarouselTrack>
+          {[...mySkills, ...mySkills].map(({ name, Component }, i) => (
+            <Tooltip key={i} label={name}>
+              <LogoCard aria-label={name}>
+                {Component}
+              </LogoCard>
+            </Tooltip>
+          ))}
+        </CarouselTrack>
+      </CarouselWrapper>
+      <div style={{ display: 'flex', flexDirection: 'row' }}>
+      <TechGrid>
+        {mySkills.map(({ name, Component }) => (
+          <Tooltip key={name} label={name}>
             <TechCard>
-              <Img src={src} />
+              {Component}
             </TechCard>
           </Tooltip>
-        )}
-        </TechGrid>
+        ))}
+      </TechGrid>
+
+      </div>
     </SectionContainer>
   )
 }

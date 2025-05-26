@@ -1,4 +1,5 @@
 import { useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
@@ -15,11 +16,12 @@ export const TooltipBubble = styled.div`
   border-radius: 8px;
   font-size: 12px;
   white-space: nowrap;
-  z-index: 1000;
+  z-index: ${({ theme }) => theme.zIndex.tooltip};
   pointer-events: none;
   opacity: 1;
-  transition: opacity 1s ease !important;
+  transition: opacity 0.2s ease;
 `;
+
 interface TooltipProps {
   label: string;
   children: React.ReactNode;
@@ -34,7 +36,7 @@ export const Tooltip = ({ label, children }: TooltipProps) => {
     const rect = wrapperRef.current?.getBoundingClientRect();
     if (rect) {
       setCoords({
-        top: rect.top - 35,
+        top: rect.top - 30,
         left: rect.left + rect.width / 2,
       });
     }
@@ -52,11 +54,13 @@ export const Tooltip = ({ label, children }: TooltipProps) => {
       >
         {children}
       </Wrapper>
-      {visible && (
-        <TooltipBubble style={{ top: coords.top, left: coords.left }}>
-          {label}
-        </TooltipBubble>
-      )}
+      {visible &&
+        createPortal(
+          <TooltipBubble style={{ top: coords.top, left: coords.left }}>
+            {label}
+          </TooltipBubble>,
+          document.body
+        )}
     </>
   );
 };

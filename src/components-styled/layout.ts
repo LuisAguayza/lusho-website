@@ -83,7 +83,7 @@ export const Card = styled.div`
   border-radius: 15px;
   border: 2px solid;
   border-color: ${({ theme }) => theme.color.card};
-  padding: 1.5rem;
+  padding: .5rem;
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -94,7 +94,7 @@ export const Card = styled.div`
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    padding: 1rem;
+    padding: .5rem;
     border-radius: 12px;
   }
 `;
