@@ -1,4 +1,5 @@
-import { Body1, Button, Card, CardTitle, Div, Grid, Icon, SubSubtitle, Subtitle, Tooltip } from "components-styled"
+import { Body1, Card, CardTitle, Div, Grid, Icon, Tooltip } from "components-styled";
+import { SITE_INFO } from "const";
 
 interface IMyInfo {
   icon: string;
@@ -7,17 +8,19 @@ interface IMyInfo {
   link?: string;
 }
 
+const { email, whatsapp, whatsappMessage } = SITE_INFO;
+
 const info: IMyInfo[] = [
   {
     icon: 'uil-envelope',
     title: 'Email',
-    description: 'luis31aguayza@gmail.com',
+    description: email,
   },
   {
     icon: 'uil-whatsapp',
     title: 'Email',
-    description: '+593 985 608 463',
-    link: 'https://wa.me/593985608463?text=Hello%20Luis',
+    description: whatsapp,
+    link: whatsappMessage,
   },
 ]
 
