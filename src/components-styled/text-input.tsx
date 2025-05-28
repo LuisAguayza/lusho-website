@@ -1,5 +1,5 @@
 import { FieldWrapper, Icon, IconWrapper, InputLabel, InputWrapper, StyledInput, StyledTextarea, Tooltip } from 'components-styled';
-import { InputHTMLAttributes, ReactNode, Ref, TextareaHTMLAttributes } from 'react';
+import { InputHTMLAttributes, ReactNode, TextareaHTMLAttributes } from 'react';
 
 type InputBaseProps = {
   tooltip?: string;

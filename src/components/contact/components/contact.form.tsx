@@ -1,30 +1,36 @@
 import { yupResolver } from '@hookform/resolvers/yup';
+import { mailingService } from 'api';
 import { Form, FormInputText, FormInputTextArea, Grid, LoadingButton } from "components-styled";
+import { useFeedback } from 'context/feedback';
+import { useState } from 'react';
 import { useForm } from "react-hook-form";
-import { InferType, object, string } from "yup";
-
-export const schema = object().shape({
-  name: string().required('Name is required').min(3, 'Debe contener al menos 3 caracteres'),
-  email: string().email().required(),
-  message: string().required('Message is required').min(10, 'Debe contener al menos 10 caracteres'),
-});
-
-type FormValues = InferType<typeof schema>;
+import { contactSchema, ContactType } from '.';
 
 export const ContactForm = () => {
-
-  const { control, handleSubmit, reset } = useForm<FormValues>({
+  const { sendContactEmail } = mailingService;
+  const [loading, setLoading] = useState(false);
+  const { showErrorModal, showSuccessModal } = useFeedback();
+  const { control, handleSubmit, reset } = useForm<ContactType>({
     defaultValues: {
       message: '',
       email: '',
       name: '',
     },
-    resolver: yupResolver(schema)
+    resolver: yupResolver(contactSchema)
   });
 
-  const handleSendMessage = (data: FormValues) => {
-    console.log(data);
-    reset();
+  const handleSendMessage = async (data: ContactType) => {
+    try {
+      setLoading(true);
+      await sendContactEmail(data);
+      reset();
+      showSuccessModal('Su mensaje se ha enviado correctamente')
+    } catch (error) {
+      showErrorModal('No se pudo enviar tu mensaje :(')
+      console.log({ error })
+    } finally {
+      setLoading(false);
+    }
   }
 
   return (
@@ -56,7 +62,7 @@ export const ContactForm = () => {
           type='submit'
           label='Send Message'
           fullwidth
-          loading={false}
+          loading={loading}
           icon='uil uil-message'
           style={{ marginTop: '0.3rem' }}
         />

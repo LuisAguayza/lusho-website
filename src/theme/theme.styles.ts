@@ -49,14 +49,16 @@ const theme: Omit<DefaultTheme, 'color'> = {
 export const LightTheme: DefaultTheme = {
   ...theme,
   color: {
-    primary: '#fff',
+    primary: '#eeeeee',
     secondary: '',
     body: 'hsl(0, 0%, 98%)',
     text: 'hsl(0, 0%, 46%)',
     title: 'hsl(0, 0%, 20%)',
     titleAlternative: '#242424',
     card: 'hsl(0, 0.00%, 44.70%)',
-    error: 'hsl(0, 65%, 55%)'
+    error: 'hsl(0, 65%, 55%)',
+    success: 'hsl(142, 71%, 45%)',
+    info: 'hsl(207, 90%, 61%)',
   },
 }
 
@@ -70,6 +72,8 @@ export const DarkTheme: DefaultTheme = {
     title: 'hsl(0, 0%, 100%)',
     titleAlternative: 'hsl(0, 0%, 80%)',
     card: 'hsl(0, 0%, 46%)',
-    error: 'hsl(0, 65%, 55%)'
+    error: 'hsl(0, 65%, 55%)',
+    success: 'hsl(142, 71%, 45%)',
+    info: 'hsl(207, 90%, 61%)',
   },
 } 

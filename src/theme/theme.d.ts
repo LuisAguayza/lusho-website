@@ -39,6 +39,8 @@ declare module 'styled-components' {
       body: string;
       card: string;
       error: string;
+      success: string;
+      info: string;
     },
     typography: {
       bodyFont: string;

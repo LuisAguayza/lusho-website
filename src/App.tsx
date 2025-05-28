@@ -1,4 +1,4 @@
-import { Container, LoadingButton, Main } from "components-styled";
+import { Container, LoadingButton, Main, Modal } from "components-styled";
 import { About } from "components/about";
 import { ContactComponent } from "components/contact";
 import { HeaderLayout } from "components/header";

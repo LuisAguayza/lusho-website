@@ -4,6 +4,8 @@ export * from './grid';
 export * from './input';
 export * from './layout';
 export * from './loading-button';
+export * from './modal';
+export * from './modal.component';
 export * from './text-input';
 export * from './tooltip';
 export * from './typography';

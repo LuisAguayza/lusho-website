@@ -1,4 +1,5 @@
-import { LanguageProvider } from 'language';
+import { FeedbackProvider } from 'context/feedback';
+import { LanguageProvider } from 'context/language';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { CustomThemeProvider } from 'theme';
@@ -10,7 +11,9 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
     <CustomThemeProvider>
       <GlobalStyles />
       <LanguageProvider>
-        <App />
+        <FeedbackProvider>
+          <App />
+        </FeedbackProvider>
       </LanguageProvider>
     </CustomThemeProvider>
   </React.StrictMode>,
