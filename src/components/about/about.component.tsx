@@ -7,7 +7,7 @@ export const About = () => {
     <SectionContainer id='about'>
       <Title style={{ textAlign: 'center', marginBottom: 0 }}>About Me</Title>
       <CardTitle style={{ textAlign: 'center', marginTop: 1}}>My introduction</CardTitle>
-      <Grid container spacing={{ xs: 'xs', md: 'lg' }}>
+      <Grid container spacing={{ xs: 'xs', md: 'xl' }}>
         <Grid item col={{ sm: 0, md: 3 }}>
           <ProfileWrapperSquare>
             <Img src='/src/assets/Lusho.jpg' alt='lusho' />

@@ -24,7 +24,7 @@ export const Home = () => {
         <Grid item col={{ sm: 12, md: 7 }} direction='column' spacing='xs'>
           <Data />
         </Grid>
-        <Grid item col={{ sm: 12, md: 3 }} style={{ alignSelf: 'center' }}>
+        <Grid item col={{ sm: 12, md: 3 }} style={{ display: 'flex', justifyContent: 'center' }}>
           <ProfileWrapper>
             <Img src='/src/assets/Lusho.jpg' alt='lusho' />
           </ProfileWrapper>

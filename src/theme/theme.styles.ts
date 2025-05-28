@@ -55,7 +55,8 @@ export const LightTheme: DefaultTheme = {
     text: 'hsl(0, 0%, 46%)',
     title: 'hsl(0, 0%, 20%)',
     titleAlternative: '#242424',
-    card: 'hsl(0, 0.00%, 44.70%)'
+    card: 'hsl(0, 0.00%, 44.70%)',
+    error: 'hsl(0, 65%, 55%)'
   },
 }
 
@@ -68,6 +69,7 @@ export const DarkTheme: DefaultTheme = {
     text: 'hsla(0, 0.00%, 96.10%, 0.76)',
     title: 'hsl(0, 0%, 100%)',
     titleAlternative: 'hsl(0, 0%, 80%)',
-    card: 'hsl(0, 0%, 46%)'
+    card: 'hsl(0, 0%, 46%)',
+    error: 'hsl(0, 65%, 55%)'
   },
 } 

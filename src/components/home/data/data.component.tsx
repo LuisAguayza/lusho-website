@@ -10,9 +10,11 @@ export const Data = () => {
         {`FrontEnd Developer`}
       </SubSubtitle>
       <Body1>{`I'm software developer based in Cuenca - Ecuador, and I'm very passionate and dedicated to my work.`}</Body1>
-      <Button fullwidth={{ xs: true, md: false }}>
-        Contact me <Icon className='uil uil-message' style={{ marginLeft: '10px' }}/>
-      </Button>
+      <a href='#contact'>
+        <Button fullwidth={{ xs: true, md: false }}>
+            Contact me <Icon className='uil uil-message'/>
+        </Button>
+      </a>
     </Div>
   )
 }

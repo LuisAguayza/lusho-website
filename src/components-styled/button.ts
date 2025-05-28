@@ -1,4 +1,4 @@
-import styled, { BreakpointBoolean, css } from 'styled-components';
+import styled, { BreakpointBoolean, css, keyframes } from 'styled-components';
 import { responsiveBooleanStyle } from 'theme';
 
 interface ButtonProps {
@@ -26,6 +26,10 @@ export const Button = styled.button.withConfig({
   margin: 0;
   padding: 10px 16px;
   transition: color 100ms;
+
+  i {
+    margin-left: 10px;
+  }
 
   &:hover {
     color: ${({ theme }) => theme.color.primary};

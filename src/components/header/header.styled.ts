@@ -12,7 +12,7 @@ export const Header = styled.header`
     top: initial;
     bottom: 0;
   }
-`;
+  `;
 
 export const Nav = styled(Main)`
   height: calc(${({theme}) => theme.spacing.lg} + 2rem);

@@ -1,14 +1,14 @@
-import { Main, Container, Button } from "components-styled";
-import { HeaderLayout } from "components/header/header.component";
-import { Home } from "components/home";
-import { useTheme } from "./theme";
+import { Container, LoadingButton, Main } from "components-styled";
 import { About } from "components/about";
+import { ContactComponent } from "components/contact";
+import { HeaderLayout } from "components/header";
+import { Home } from "components/home";
 import { Skills } from "components/skills";
+import { useTheme } from "./theme";
 
 function App() {
 
   const { toggleTheme } = useTheme();
-  // const { changeLanguage } = useLanguage();
 
   return (
     <Main>
@@ -17,7 +17,12 @@ function App() {
         <Home />
         <About />
         <Skills />
-        <Button onClick={toggleTheme}>Change theme</Button>
+        <ContactComponent />
+        <LoadingButton
+          onClick={toggleTheme}
+          label='Toggle Theme'
+          fullwidth
+        />
       </Container>
     </Main>
   )

@@ -1,6 +1,5 @@
 import { Body1, Button, Card, CardTitle, Div, Grid, Icon } from "components-styled"
 
-
 const currentYear = new Date().getFullYear();
 
 const info = [
@@ -23,7 +22,11 @@ const info = [
 
 export const AboutInfo = () => {
   return (
-    <Grid container style={{ justifyContent: 'space-between' }} spacing={{ md: 'sm', xs: 'xs' }}>
+    <Grid
+      container
+      spacing={{ md: 'sm', xs: 'xs' }}
+      style={{ justifyContent: 'space-between' }}
+    >
       { info.map(({ description, icon, title }) => 
         <CardInfo key={title} description={description} title={title} icon={icon}/>
       )}
@@ -37,7 +40,7 @@ export const AboutInfo = () => {
       <Grid item col={12}>
         <a download href='/src/assets/Luis Aguayza CV.docx.pdf'>
           <Button fullwidth={{ xs: true, md: false }}>
-            Download CV <Icon style={{ marginLeft: '10px' }} className="uil uil-file-alt"/>
+            Download CV <Icon className="uil uil-file-alt"/>
           </Button>
         </a>
       </Grid>

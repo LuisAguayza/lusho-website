@@ -10,7 +10,7 @@ export const HomeContainer = styled(SectionContainer)`
 export const ProfileWrapper = styled.div`
   width: 250px;
   height: 250px;
-  border: 5px solid ${({ theme }) => theme.color.secondary};
+  border: 2px solid ${({ theme }) => theme.color.secondary};
   border-radius: 50%;
   overflow: hidden;
   display: flex;
@@ -26,8 +26,8 @@ export const ProfileWrapper = styled.div`
 export const ProfileWrapperSquare = styled.div`
   width: 'auto';
   height: '100%';
-  border: 5px solid ${({ theme }) => theme.color.secondary};
-  border-radius: 5%;
+  border: 2px solid ${({ theme }) => theme.color.secondary};
+  border-radius: 2%;
   overflow: hidden;
   display: flex;
   justify-content: center;

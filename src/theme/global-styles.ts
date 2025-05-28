@@ -35,4 +35,21 @@ export default createGlobalStyle`
   a {
     text-decoration: none;
   }
+
+  ::-webkit-scrollbar {
+    width: 5px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: ${({ theme }) => theme.color.primary}
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: ${({ theme }) => theme.color.card};
+    border-radius: 5px;
+    &:hover {
+      background: ${({ theme }) => theme.color.title};
+    }
+  }
 `;

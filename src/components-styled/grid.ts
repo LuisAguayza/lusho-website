@@ -25,7 +25,7 @@ export const Grid = styled.div
     shouldForwardProp: prop => !gridProps.includes(prop as GridPropKey)
   })<GridProps>`
   box-sizing: border-box;
-
+  width: 100%;
   ${({ container }) =>
     container &&
     css`

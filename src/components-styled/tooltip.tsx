@@ -5,6 +5,7 @@ import styled from 'styled-components';
 export const Wrapper = styled.div`
   display: inline-block;
   position: relative;
+  width: 100%;
 `;
 
 export const TooltipBubble = styled.div`
@@ -36,7 +37,7 @@ export const Tooltip = ({ label, children }: TooltipProps) => {
     const rect = wrapperRef.current?.getBoundingClientRect();
     if (rect) {
       setCoords({
-        top: rect.top - 30,
+        top: rect.top - 40,
         left: rect.left + rect.width / 2,
       });
     }

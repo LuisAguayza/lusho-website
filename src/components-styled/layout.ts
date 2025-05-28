@@ -4,10 +4,10 @@ export const Container = styled.main`
   display: flex;
   flex-direction: column;
   padding-block: calc(${({theme}) => theme.spacing.lg} + 2rem);
+
   @media screen and (max-width: ${({ theme }) => theme.breakpoints.md}) {
     padding-top: ${({ theme }) => theme.spacing.lg};
   }
-
   @media screen and (max-width: ${({ theme }) => theme.breakpoints.xs}) {
     padding-top: 0;
   }
@@ -43,7 +43,6 @@ export const SectionContainer = styled.div`
     padding-top: ${({ theme }) => theme.spacing.lg};
     padding-inline: ${({ theme }) => theme.spacing.md};
   }
-
   @media (min-width: ${({ theme }) => theme.breakpoints.xs}) {
     padding-block: calc(${({theme}) => theme.spacing.xs});
   }
@@ -67,7 +66,7 @@ export const Link = styled.a`
   font-size: ${({ theme }) => theme.typography.small};
 	font-weight: ${({ theme }) => theme.fontWeight.medium};
 	&:hover {
-		color: ${({ theme }) => theme.color.titleAlternative};
+		color: ${({ theme }) => theme.color.title};
 	}
 `;
 
@@ -83,7 +82,7 @@ export const Card = styled.div`
   border-radius: 15px;
   border: 2px solid;
   border-color: ${({ theme }) => theme.color.card};
-  padding: .5rem;
+  padding: ${({ theme }) => theme.spacing.xs};
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -98,3 +97,5 @@ export const Card = styled.div`
     border-radius: 12px;
   }
 `;
+
+export const Form = styled.form``;
