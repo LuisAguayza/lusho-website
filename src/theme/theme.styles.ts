@@ -71,7 +71,7 @@ export const DarkTheme: DefaultTheme = {
     text: 'hsla(0, 0.00%, 96.10%, 0.76)',
     title: 'hsl(0, 0%, 100%)',
     titleAlternative: 'hsl(0, 0%, 80%)',
-    card: 'hsl(0, 0%, 46%)',
+    card: 'hsla(0, 0.00%, 45.90%, 0.41)',
     error: 'hsl(0, 65%, 55%)',
     success: 'hsl(142, 71%, 45%)',
     info: 'hsl(207, 90%, 61%)',

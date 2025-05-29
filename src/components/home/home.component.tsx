@@ -16,8 +16,9 @@ export const Home = () => {
           col={{ sm: 12, md: 1 }}
           direction={{ sm: 'row', lg: 'column' }}
           style={{
-            justifyContent: 'center',
+            justifyContent: 'space-evenly',
           }}
+          spacing='xs'
         >
           <Social />
         </Grid>

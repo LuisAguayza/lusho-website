@@ -27,8 +27,8 @@ export const CustomThemeProvider: FC<PropsWithChildren> = ({ children }) => {
   return (
     <ThemeContext.Provider
       value={{
-        mode: stateStorage.mode,
-        toggleTheme
+        toggleTheme,
+        isDarkTheme: stateStorage.mode === ThemeStateEnum.DARK
       }}
     >
       <ThemeProvider

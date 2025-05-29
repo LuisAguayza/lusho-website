@@ -1,18 +1,14 @@
 import { Icon, Link } from 'components-styled'
-import { SITE_INFO } from 'const/site-info'
+import { socialNetwork } from 'const'
 
 export const Social = () => {
   return (
     <>
-      <Link href={SITE_INFO.github} className='home__social-icon ' target='_blank'>
-        <Icon className='uil uil-instagram'/>
+    { socialNetwork.map(({ href, icon, name }) =>
+      <Link key={name} href={href} target='_blank'>
+        <Icon className={icon}/>
       </Link>
-      <Link href={SITE_INFO.github} className='home__social-icon' target='_blank'>
-        <Icon className='uil uil-dribbble'/>
-      </Link>
-      <Link href={SITE_INFO.github} className='home__social-icon' target='_blank'>
-        <Icon className='uil uil-github-alt'/>
-      </Link>
+    )}
     </>
   )
 }

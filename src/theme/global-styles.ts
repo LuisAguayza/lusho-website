@@ -3,16 +3,21 @@ import { createGlobalStyle } from "styled-components";
 export default createGlobalStyle`
   body {
     margin: 0;
+    /* background-color: ${({ theme }) => theme.color.primary}; */
   }
   
+  * {
+    transition: color 0.3s linear, background-color 0.3s linear, border-color 0.3s linear;
+  }
+
   *, *::before, *::after {
     box-sizing: border-box;
-    transition: all 0.2s linear;
   }
   
   a {
-    text-decoration: none;
     color: inherit;
+    text-decoration: none;
+    transition: none !important;
   }
   
   body,
@@ -28,12 +33,9 @@ export default createGlobalStyle`
     padding: 0;
     margin: 0;
   }
+  
   html {
     scroll-behavior: smoot;
-  }
-  
-  a {
-    text-decoration: none;
   }
 
   ::-webkit-scrollbar {

@@ -1,11 +1,14 @@
-import { Link } from 'components-styled';
-import { Header, IconHeader, List, ListItem, Nav, NavLogo, NavMenu } from 'components/header';
+import { Div, Link } from 'components-styled';
+import { Header, IconHeader, List, ListItem, Nav, NavLogo, NavMenu, ThemeIcon, ThemeLabel } from 'components/header';
+import { headerLinks } from 'const';
 import { useState } from 'react';
+import { useTheme } from 'theme';
 
 export const HeaderLayout = () => {
 
 	const [isHide, setIsHide] = useState(false);
 	const toggleHide = () => setIsHide(prev => !prev);
+  const { isDarkTheme, toggleTheme } = useTheme();
 
 	return (
 		<Header>
@@ -15,37 +18,24 @@ export const HeaderLayout = () => {
         </NavLogo>
 				<NavMenu isHide={isHide}>
 					<List>
-						<ListItem>
-				 			<Link href='#home'>
-								<IconHeader />
-								Home
-							</Link>
-						</ListItem>
-            <ListItem>
-							<Link href='#about'>
-								<IconHeader />
-								About
-							</Link>
-						</ListItem>
-						<ListItem>
-							<Link href='#skills'>
-								<IconHeader></IconHeader>
-								Skills
-							</Link>
+            { headerLinks.map(({ href, icon, name }) =>
+              <ListItem key={name}>
+                <Link href={href}>
+                  <IconHeader className={icon} />
+                  {name}
+                </Link>
+              </ListItem>
+            )}
+            <ListItem onClick={toggleTheme}>
+              <Div style={{
+                display: 'flex',
+                flexDirection: 'column',
+                cursor: 'pointer'
+              }}>
+                <ThemeIcon className={isDarkTheme ? 'uil uil-moon' : 'uil uil-sun'} />
+                <ThemeLabel>Mode</ThemeLabel>
+              </Div>
             </ListItem>
-            <ListItem>
-							<Link href='#contact'>
-								<IconHeader className='uil uil-estate'></IconHeader>
-								Contact
-							</Link>
-						</ListItem>
-						{/* 
-						<ListItem>
-							<Link>
-								<IconHeader className='uil uil-estate'></IconHeader>
-								Home
-							</Link>
-						</ListItem> */}
 					</List>
 				</NavMenu>
 				<IconHeader

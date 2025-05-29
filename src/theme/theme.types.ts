@@ -1,7 +1,8 @@
 import { ThemeStateEnum } from "theme";
 
-export type ThemeContextType = ThemeState & {
+export type ThemeContextType = {
   toggleTheme: () => void;
+  isDarkTheme: boolean;
 };
 
 export type ThemeState = {

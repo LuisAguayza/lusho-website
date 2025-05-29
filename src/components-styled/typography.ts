@@ -5,7 +5,6 @@ export const Title = styled.h1`
   font-family: ${({ theme }) => theme.typography.bodyFont};
   font-weight: ${({ theme }) => theme.fontWeight.semiBold};
   color: ${({ theme }) => theme.color.title};
-
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     font-size: ${({ theme }) => theme.typography.responsive.h1};
   }

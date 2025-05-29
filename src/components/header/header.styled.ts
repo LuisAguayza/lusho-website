@@ -1,4 +1,4 @@
-import { Main, Icon } from "components-styled";
+import { Main, Icon, Container } from "components-styled";
 import styled from "styled-components";
 
 export const Header = styled.header`
@@ -8,22 +8,23 @@ export const Header = styled.header`
   left: 0;
   z-index: ${({ theme }) => theme.zIndex.fixed};
   background-color: ${({ theme }) => theme.color.card};
+  padding-inline: calc(${({theme}) => theme.spacing.xl} + 3rem);
   @media screen and (max-width: ${({ theme }) => theme.breakpoints.md}) {
     top: initial;
     bottom: 0;
+    padding-inline: calc(${({theme}) => theme.spacing.sm} + 0.5rem);    
+    padding-block: calc(${({theme}) => theme.spacing.xs} + 0.5rem);    
   }
   `;
 
-export const Nav = styled(Main)`
-  height: calc(${({theme}) => theme.spacing.lg} + 2rem);
+export const Nav = styled.div`
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	column-gap: 1rem;
-  @media screen and (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    transition: all 1s all;
-  }
+  color: ${({ theme }) => theme.color.text};
 `;
+
 
 export const NavLogo = styled(Nav)`
 	color: ${({ theme }) => theme.color.title};
@@ -33,6 +34,7 @@ export const NavLogo = styled(Nav)`
 
 export const List = styled.ul`
   display: flex;
+  align-items: center;
   column-gap: 2rem;
 	list-style-type: none;
   margin: 0;
@@ -48,7 +50,7 @@ export const List = styled.ul`
 `;
 
 export const ListItem = styled.li`
-  /* background-color: ${({ theme }) => theme.color.primary}; */
+  text-align: center;
 `;
 
 export const IconHeader = styled(Icon).withConfig({
@@ -63,9 +65,21 @@ export const IconHeader = styled(Icon).withConfig({
     cursor: pointer;
     color: ${({ theme }) => theme.color.title};
     &:hover {
-		  color: ${({ theme }) => theme.color.titleAlternative};
+      color: ${({ theme }) => theme.color.titleAlternative};
 	  }
   }
+`;
+
+export const ThemeLabel = styled.span`
+  font-size: ${({ theme }) => theme.typography.small};
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.md}) {
+    display: none;
+    width: 100%;
+  }
+`;
+
+export const ThemeIcon = styled(IconHeader)`
+  display: block;    
 `;
 
 export const NavMenu = styled.div.withConfig({
@@ -81,7 +95,7 @@ export const NavMenu = styled.div.withConfig({
     padding: 2rem 1.5rem 4rem;
     box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.15);
     border-radius: 1.5rem 1.5rem 0 0;
-    /* transition: all .5s linear; */
+    transition: bottom .5s linear;
   };
   @media screen and (max-width: ${({ theme }) => theme.breakpoints.xs}) {
     padding: 2rem 0.25rem 4rem;

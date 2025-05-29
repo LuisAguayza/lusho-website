@@ -25,7 +25,6 @@ export const Button = styled.button.withConfig({
   height: 37px;
   margin: 0;
   padding: 10px 16px;
-  transition: color 100ms;
 
   i {
     margin-left: 10px;

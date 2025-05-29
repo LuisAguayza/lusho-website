@@ -19,9 +19,10 @@ interface BrevoResponse {
   messageId: string;
 }
 
-const { brevoApiKey, brevoApiUrl, email } = SITE_INFO; 
 
 const sendEmail = async (payload: BrevoEmailPayload) => {
+  const brevoApiKey = import.meta.env.VITE_MAIL_API_KEY;
+  const brevoApiUrl = 'https://api.brevo.com/v3/'; 
   return await post<BrevoResponse, BrevoEmailPayload>(
     `${brevoApiUrl}smtp/email`,
     payload,
@@ -32,6 +33,7 @@ const sendEmail = async (payload: BrevoEmailPayload) => {
 };
 
 const sendContactEmail = (data: ContactType) => {
+  const { email } = SITE_INFO;
   const htmlContent = `
     <p><strong>Nombre:</strong> ${data.name}</p>
     <p><strong>Email:</strong> ${data.email}</p>

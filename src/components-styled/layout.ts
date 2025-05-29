@@ -1,33 +1,19 @@
 import styled from "styled-components";
 
-export const Container = styled.main`
+export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  padding-block: calc(${({theme}) => theme.spacing.lg} + 2rem);
 
-  @media screen and (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    padding-top: ${({ theme }) => theme.spacing.lg};
-  }
-  @media screen and (max-width: ${({ theme }) => theme.breakpoints.xs}) {
+  @media screen and (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    padding-inline: calc(${({ theme }) => theme.spacing.sm} + 0.5rem);
     padding-top: 0;
   }
 `;
 
-export const Main = styled.div`
-  background-color: ${({ theme }) => theme.color.primary};
+export const Main = styled.main`
   color: ${({ theme }) => theme.color.text};
   height: 100%;
-  padding-right: ${({ theme }) => theme.spacing.lg};
-  padding-left: ${({ theme }) => theme.spacing.lg};
-
-  @media screen and (max-width: ${({ theme }) => theme.breakpoints.lg}) {
-    padding-right: ${({ theme }) => theme.spacing.md};
-    padding-left: ${({ theme }) => theme.spacing.md};
-  }
-  @media screen and (max-width: ${({ theme }) => theme.breakpoints.xs}) {
-    padding-right: ${({ theme }) => theme.spacing.sm};
-    padding-left: ${({ theme }) => theme.spacing.sm};
-  }
+  background-color: ${({ theme }) => theme.color.primary};
 `;
 
 export const SectionContainer = styled.div`
@@ -39,12 +25,12 @@ export const SectionContainer = styled.div`
   max-width: ${({ theme }) => theme.breakpoints.xl};
   margin-inline: auto;
   
-  @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     padding-top: ${({ theme }) => theme.spacing.lg};
-    padding-inline: ${({ theme }) => theme.spacing.md};
+    padding-inline: ${({ theme }) => theme.spacing.sm};
   }
-  @media (min-width: ${({ theme }) => theme.breakpoints.xs}) {
-    padding-block: calc(${({theme}) => theme.spacing.xs});
+  @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
+    padding-block: calc(${({theme}) => theme.spacing.lg});
   }
 `;
 

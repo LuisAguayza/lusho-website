@@ -11,7 +11,7 @@ const sharedFieldStyles = css<InputStyledProps>`
   font-size: ${({ theme }) => theme.typography.normal};
   color: ${({ theme }) => theme.color.title};
   background-color: ${({ theme }) => theme.color.primary};
-  border: 1px solid ${({ theme }) => theme.color.card}; // nunca rojo
+  border: 1px solid ${({ theme }) => theme.color.card};
   border-radius: 8px;
   outline: none;
   transition: border 0.2s ease;
@@ -80,10 +80,8 @@ export const IconWrapper = styled.div.withConfig({
     width: 18px;
     height: 18px;
     color: ${({ error, theme }) => (error ? theme.color.error : theme.color.card)};
-    transition: color 0.2s ease;
   }
 
-  // override si tiene focus
   ${FieldWrapper}:focus-within & i {
     color: ${({ error, theme }) => (error ? theme.color.error : theme.color.title)};
   }

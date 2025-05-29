@@ -18,7 +18,7 @@ const info: IMyInfo[] = [
   },
   {
     icon: 'uil-whatsapp',
-    title: 'Email',
+    title: 'Whatsapp',
     description: whatsapp,
     link: whatsappMessage,
   },
