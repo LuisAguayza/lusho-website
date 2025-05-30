@@ -25,12 +25,10 @@ export const SectionContainer = styled.div`
   flex-direction: column;
   max-width: ${({ theme }) => theme.breakpoints.xl};
   margin-inline: auto;
-  padding-block: calc(${({theme}) => theme.spacing.md});  
-
-  @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
-    padding-block: calc(${({theme}) => theme.spacing.md});
-    padding-inline: calc(${({theme}) => theme.spacing.md} + 2rem);
-    
+  padding-block: calc(${({theme}) => theme.spacing.md} + 2rem);
+  
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    padding-block: calc(${({theme}) => theme.spacing.xs} + 1rem);  
   }
 `;
 

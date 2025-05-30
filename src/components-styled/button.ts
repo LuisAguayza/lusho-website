@@ -46,3 +46,28 @@ export const Button = styled.button.withConfig({
       : fullwidth &&
         responsiveBooleanStyle('width', fullwidth, theme)}
 `;
+
+export const TextButton = styled(Button).attrs({ as: 'button' })<ButtonProps>`
+  background-color: transparent;
+  color: ${({ theme }) => theme.color.titleAlternative};
+  padding: 0;
+  height: auto;
+  font-size: 14px;
+  border: none;
+
+  &:hover {
+    background-color: transparent;
+    text-decoration: underline;
+    color: ${({ theme }) => theme.color.title}; // opcional: otro color al hover
+  }
+
+  ${({ fullwidth, theme }) =>
+    typeof fullwidth === 'boolean'
+      ? fullwidth &&
+          css`
+            width: 100%;
+          `
+      : Array.isArray(fullwidth)
+      ? null
+      : fullwidth && responsiveBooleanStyle('width', fullwidth, theme)}
+`;

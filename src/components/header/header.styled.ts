@@ -8,15 +8,19 @@ export const Header = styled.header`
   left: 0;
   background-color: ${({ theme }) => theme.color.primary};
   z-index: ${({ theme }) => theme.zIndex.fixed};
-  padding-inline: calc(${({theme}) => theme.spacing.xl} + 3rem);
-  height: calc(${({theme}) => theme.spacing.xl} + 1rem);
+  padding-inline: calc(${({ theme }) => theme.spacing.xl} + 3rem);
+  height: calc(${({ theme }) => theme.spacing.xl} + 1rem);
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.08);
+
   @media screen and (max-width: ${({ theme }) => theme.breakpoints.md}) {
     top: initial;
     bottom: 0;
-    padding-inline: calc(${({theme}) => theme.spacing.sm} + 0.5rem);    
-    padding-block: calc(${({theme}) => theme.spacing.md} + 0.5rem);    
+    padding-inline: calc(${({ theme }) => theme.spacing.sm} + 0.5rem);    
+    padding-block: calc(${({ theme }) => theme.spacing.md} + 0.5rem);    
+    box-shadow: 0px -2px 8px rgba(0, 0, 0, 0.08); /* en la parte superior */
   }
-  `;
+`;
+
 
 export const Nav = styled.div`
 	display: flex;
@@ -26,7 +30,6 @@ export const Nav = styled.div`
   height: 100%;
   color: ${({ theme }) => theme.color.text};
 `;
-
 
 export const NavLogo = styled(Nav)`
 	color: ${({ theme }) => theme.color.title};

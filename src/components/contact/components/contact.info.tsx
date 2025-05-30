@@ -1,4 +1,4 @@
-import { Body1, Button, Card, CardTitle, Div, Grid, Icon, Tooltip } from "components-styled";
+import { Body1, Button, Card, CardTitle, Div, Grid, Icon, TextButton, Tooltip } from "components-styled";
 import { SITE_INFO } from "const";
 
 interface IMyInfo {
@@ -28,7 +28,7 @@ export const ContactInfo = () => {
   return (
     <Grid
       container
-      spacing={{ xs: 'md', md: 'xl' }}
+      spacing={{ xs: 'md', md: 'lg' }}
       direction={{ xs: 'row', md: 'column' }}
       style={{ justifyContent: 'space-between', width: '100%' }}
     >
@@ -52,7 +52,9 @@ const CardInfo = ({
         <CardTitle>{title}</CardTitle>
         <Body1 style={{ marginTop: 0 }}>{description}</Body1>
         { link &&
-          <Button>Send message</Button>
+          <a href={link} target='_blank'>
+            <TextButton>Send message</TextButton>
+          </a>
         }
       </Div>
     </Card>
