@@ -19,7 +19,7 @@ const TooltipBubble = styled.div<{ coords: { top: number; left: number } }>`
   color: ${({ theme }) => theme.color.primary};
   padding: 6px 10px;
   border-radius: 8px;
-  font-size: 12px;
+  font-size: ${({ theme }) => theme.typography.smaller};
   z-index: ${({ theme }) => theme.zIndex.tooltip};
   white-space: normal;
   text-align: center;

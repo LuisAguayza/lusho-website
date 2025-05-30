@@ -1,5 +1,5 @@
 import { FeedbackProvider } from 'context/feedback';
-import { LanguageProvider } from 'context/language';
+import { LanguageProvider } from 'context/i18n';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { CustomThemeProvider } from 'theme';

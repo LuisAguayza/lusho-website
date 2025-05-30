@@ -1,0 +1,52 @@
+{
+	"hello": "hello",
+  "title": {
+    "home": "Home",
+    "about": "About",
+    "skills": "Skills",
+    "contact": "Contact"
+  },
+  "home": {
+    "description": "Fullstack Developer based in Cuenca, Ecuador, specialized in React and .NET Core, focused on building scalable, secure, and maintainable web applications. Committed to writing clean and efficient code while optimizing user experience. I enjoy tackling technical challenges with patience and a touch of humor to keep creativity alive.",
+    "subtitle": "Fullstack Developer"
+  },
+  "about": {
+    "subtitle": "My introduction",
+    "introduction": "Desarrollador Fullstack con experiencia en la construcción de aplicaciones web escalables, especializado en React, Next.js y TypeScript para el frontend, y .NET Core, Entity Framework y MySQL para el backend. Apasionado por diseñar arquitecturas modernas, seguras y de alto rendimiento, con un enfoque en la eficiencia, mantenibilidad y buenas prácticas. Amplia experiencia en desarrollo de APIs, optimización de bases de datos y comunicación en tiempo real mediante WebSockets.",
+    "downloadCV": "Download CV",
+    "yearsExperience": "+{a} years"
+  },
+  "skills": {
+    "subtitle": "My working stack"
+  },
+  "contact": {
+    "subtitle": "Contact me",
+    "title": "Contact",
+    "talkToMe": "Talk to me",
+    "sendMessage": "Send me a message",
+    "sendWhatsapp": "Send me a WhatsApp",
+    "form": {
+      "namePlaceholder": "Enter your name",
+      "emailPlaceholder": "Enter your email",
+      "messagePlaceholder": "Your message",
+      "nameTooltip": "Your name",
+      "emailTooltip": "Your email",
+      "messageTooltip": "Your message",
+      "messageSent": "Thanks for reaching out! I'll get back to you soon 😊",
+      "notSent": "Your message couldn’t be sent. Please try again later."
+    }
+  },
+  "form": {
+    "requiredField": "This field is required.",
+    "minLength": "Must be at least {min} characters long."
+  },
+  "utils": {
+    "error": "Oops! Something went wrong",
+    "success": "Success",
+    "changeTheme": "Change theme",
+    "changeLanguage": "Change language"
+  },
+  "footer": {
+    "rights": "All rights reserved"
+  }
+}

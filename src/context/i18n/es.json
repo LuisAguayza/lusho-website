@@ -1,0 +1,52 @@
+{
+	"hello": "hello",
+  "title": {
+    "home": "Inicio",
+    "about": "About",
+    "skills": "Skills",
+    "contact": "Contact"
+  },
+  "home": {
+    "description": "Desarrollador Fullstack en Cuenca, Ecuador, especializado en React y .NET Core, enfocado en crear aplicaciones web escalables, seguras y fáciles de mantener. Comprometido con escribir código limpio y eficiente, siempre buscando optimizar la experiencia del usuario. Me gusta enfrentar retos técnicos con paciencia y un poco de humor para mantener la creatividad.",
+    "subtitle": "Desarrollador Fullstack"
+  },
+  "about": {
+    "subtitle": "Introducción",
+    "introduction": "Fullstack Developer with experience in building scalable web applications, specializing in React, Next.js, and TypeScript for the frontend, and .NET Core, Entity Framework, and MySQL for the backend. Passionate about designing modern, high-performance, and secure architectures, focusing on efficiency, maintainability, and best practices. Strong experience in API development, database optimization, and real-time communication with WebSockets.",
+    "downloadCV": "Descargar CV",
+    "yearsExperience": "+{a} años"
+  },
+  "skills": {
+    "subtitle": "Mi stack de trabajo"
+  },
+  "contact": {
+    "subtitle": "Contáctame",
+    "title": "Contacto",
+    "talkToMe": "Hablemos",
+    "sendMessage": "Envíame un mensaje",
+    "sendWhatsapp": "Envíame un WhatsApp",
+    "form": {
+      "namePlaceholder": "Ingresa tu nombre",
+      "emailPlaceholder": "Ingresa tu mail",
+      "messagePlaceholder": "Tu mensaje",
+      "nameTooltip": "Tu nombre",
+      "emailTooltip": "Tu mail",
+      "messageTooltip": "Tu mensaje",
+      "messageSent": "¡Gracias por escribirme! Te responderé pronto 😊",
+      "notSent": "No se pudo. Intenta de nuevo más tarde."
+    }
+  },
+  "form": {
+    "requiredField": "Este campo es obligatorio.",
+    "minLength": "Debe contener al menos {min} caracteres."
+  },
+  "utils": {
+    "error": "Ups... algo salió mal.",
+    "success": "Éxito",
+    "changeTheme": "Cambiar tema",
+    "changeLanguage": "Cambiar idioma"
+  },
+  "footer": {
+    "rights": "Todos los derechos reservados"
+  }
+}
