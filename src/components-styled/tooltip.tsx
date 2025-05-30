@@ -7,34 +7,32 @@ const Wrapper = styled.div`
   position: relative;
 `;
 
-export const TooltipBubble = styled.div`
+const width = 400;
+const scroll = 'scroll';
+
+const TooltipBubble = styled.div<{ coords: { top: number; left: number } }>`
   position: fixed;
+  top: ${({ coords }) => coords.top}px;
+  left: ${({ coords }) => coords.left}px;
+  transform: translateX(-50%);
   background-color: ${({ theme }) => theme.color.titleAlternative};
   color: ${({ theme }) => theme.color.primary};
   padding: 6px 10px;
   border-radius: 8px;
   font-size: 12px;
   z-index: ${({ theme }) => theme.zIndex.tooltip};
-  pointer-events: none;
   white-space: normal;
-  word-break: break-word;
   text-align: center;
-  opacity: 1;
+  max-width: ${width}px; /* ← más ancho en desktop */
+  box-shadow: 0 2px 10px rgba(0,0,0,0.15);
   transition: opacity 0.2s ease;
-
-  max-width: 300px;
-  min-width: 100px;
-  width: fit-content;
-
-  transform: translateX(-50%);
+  pointer-events: none;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    max-width: 70vw;
-    transform: none;
+    max-width: 80vw;
+    font-size: ${({ theme }) => theme.typography.tiny};
   }
 `;
-
-const scroll = 'scroll';
 interface TooltipProps {
   label: string;
   children: React.ReactNode;
@@ -44,41 +42,44 @@ export const Tooltip = ({ label, children }: TooltipProps) => {
   const [visible, setVisible] = useState(false);
   const [coords, setCoords] = useState({ top: 0, left: 0 });
   const wrapperRef = useRef<HTMLDivElement>(null);
+  const tooltipRef = useRef<HTMLDivElement>(null);
 
-  const handleMouseEnter = () => {
+  const handlePosition = () => {
     const rect = wrapperRef.current?.getBoundingClientRect();
     if (rect) {
-      const tooltipHeight = 40;
-      const topAbove = rect.top - tooltipHeight;
-      const topBelow = rect.bottom;
-
-      let top = topAbove < 0 ? topBelow : topAbove;
-      let left = rect.left + rect.width / 2;
+      const tooltipWidth = tooltipRef.current?.offsetWidth || width;
+      const tooltipHeight = tooltipRef.current?.offsetHeight || 40;
 
       const screenWidth = window.innerWidth;
-      const tooltipMaxWidth = 300;
+      const centerLeft = rect.left + rect.width / 2;
 
-      if (left - tooltipMaxWidth / 2 < 0) {
-        left = tooltipMaxWidth / 2;
-      } else if (left + tooltipMaxWidth / 2 > screenWidth) {
-        left = screenWidth - tooltipMaxWidth / 2;
+      let left = centerLeft;
+      let top = rect.top - tooltipHeight - 8;
+
+      if (centerLeft - tooltipWidth / 2 < 8) {
+        left = tooltipWidth / 2 + 8;
+      } else if (centerLeft + tooltipWidth / 2 > screenWidth - 8) {
+        left = screenWidth - tooltipWidth / 2 - 8;
+      }
+
+      if (top < 8) {
+        top = rect.bottom + 8;
       }
 
       setCoords({ top, left });
-      setVisible(true);
     }
   };
 
-  const handleMouseLeave = () => setVisible(false);
-
   useEffect(() => {
-    if (!visible) return;
-
-    const handleScroll = () => setVisible(false);
-    window.addEventListener(scroll, handleScroll, true);
-
+    const handleScroll = () => {
+      setVisible(false);
+    };
+    if (visible) {
+      handlePosition();
+      window.addEventListener(scroll, handleScroll, { once: true });
+    }
     return () => {
-      window.removeEventListener(scroll, handleScroll, true);
+      window.removeEventListener(scroll, handleScroll);
     };
   }, [visible]);
 
@@ -86,14 +87,16 @@ export const Tooltip = ({ label, children }: TooltipProps) => {
     <>
       <Wrapper
         ref={wrapperRef}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
+        onMouseEnter={() => setVisible(true)}
+        onMouseLeave={() => setVisible(false)}
       >
         {children}
       </Wrapper>
       {visible &&
         createPortal(
-          <TooltipBubble style={{ ...coords }}>{label}</TooltipBubble>,
+          <TooltipBubble ref={tooltipRef} coords={coords}>
+            {label}
+          </TooltipBubble>,
           document.body
         )}
     </>
