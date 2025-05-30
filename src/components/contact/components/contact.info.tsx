@@ -1,4 +1,4 @@
-import { Body1, Card, CardTitle, Div, Grid, Icon, Tooltip } from "components-styled";
+import { Body1, Button, Card, CardTitle, Div, Grid, Icon, Tooltip } from "components-styled";
 import { SITE_INFO } from "const";
 
 interface IMyInfo {
@@ -33,13 +33,7 @@ export const ContactInfo = () => {
       style={{ justifyContent: 'space-between', width: '100%' }}
     >
     { info.map((info, index) =>
-      info.link
-      ? <Tooltip key={index} label={'Click to open link'}>
-         <a href={info.link} target='_blank' rel='noopener noreferrer'>
-          <CardInfo {...info} />
-         </a>
-        </Tooltip>
-      : <CardInfo key={index} {...info}/>
+      <CardInfo key={index} {...info}/>
     )}
     </Grid>
   )
@@ -49,6 +43,7 @@ const CardInfo = ({
   description,
   icon,
   title,
+  link
 }: IMyInfo) => (
   <Grid item col={12} style={{ textAlign: 'center' }}>
     <Card style={{ cursor: 'pointer' }}>
@@ -56,6 +51,9 @@ const CardInfo = ({
         <Icon className={icon} />
         <CardTitle>{title}</CardTitle>
         <Body1 style={{ marginTop: 0 }}>{description}</Body1>
+        { link &&
+          <Button>Send message</Button>
+        }
       </Div>
     </Card>
   </Grid>

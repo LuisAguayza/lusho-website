@@ -3,10 +3,11 @@ import styled from "styled-components";
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-
-  @media screen and (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+  margin-top: calc(${({theme}) => theme.spacing.xl} + 1rem);
+  @media screen and (max-width: ${({ theme }) => theme.breakpoints.md}) {
     padding-inline: calc(${({ theme }) => theme.spacing.sm} + 0.5rem);
-    padding-top: 0;
+    margin-top: 0;
+    margin-bottom: calc(${({theme}) => theme.spacing.md} + 1rem);
   }
 `;
 
@@ -24,13 +25,12 @@ export const SectionContainer = styled.div`
   flex-direction: column;
   max-width: ${({ theme }) => theme.breakpoints.xl};
   margin-inline: auto;
-  
-  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    padding-top: ${({ theme }) => theme.spacing.lg};
-    padding-inline: ${({ theme }) => theme.spacing.sm};
-  }
+  padding-block: calc(${({theme}) => theme.spacing.md});  
+
   @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
-    padding-block: calc(${({theme}) => theme.spacing.lg});
+    padding-block: calc(${({theme}) => theme.spacing.md});
+    padding-inline: calc(${({theme}) => theme.spacing.md} + 2rem);
+    
   }
 `;
 

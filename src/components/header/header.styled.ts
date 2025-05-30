@@ -6,14 +6,15 @@ export const Header = styled.header`
   position: fixed;
   top: 0;
   left: 0;
+  background-color: ${({ theme }) => theme.color.primary};
   z-index: ${({ theme }) => theme.zIndex.fixed};
-  background-color: ${({ theme }) => theme.color.card};
   padding-inline: calc(${({theme}) => theme.spacing.xl} + 3rem);
+  height: calc(${({theme}) => theme.spacing.xl} + 1rem);
   @media screen and (max-width: ${({ theme }) => theme.breakpoints.md}) {
     top: initial;
     bottom: 0;
     padding-inline: calc(${({theme}) => theme.spacing.sm} + 0.5rem);    
-    padding-block: calc(${({theme}) => theme.spacing.xs} + 0.5rem);    
+    padding-block: calc(${({theme}) => theme.spacing.md} + 0.5rem);    
   }
   `;
 
@@ -22,6 +23,7 @@ export const Nav = styled.div`
 	justify-content: space-between;
 	align-items: center;
 	column-gap: 1rem;
+  height: 100%;
   color: ${({ theme }) => theme.color.text};
 `;
 
@@ -85,7 +87,6 @@ export const ThemeIcon = styled(IconHeader)`
 export const NavMenu = styled.div.withConfig({
   shouldForwardProp: prop => prop !== 'isHide'
 })<{ isHide: boolean }>`
-  background-color: ${({ theme }) => theme.color.primary};
   @media screen and (max-width: ${({ theme }) => theme.breakpoints.md}) {
     position: fixed;
     bottom: ${(props) => props.isHide ? 0 : '-100%'};

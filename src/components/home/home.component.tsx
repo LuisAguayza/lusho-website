@@ -14,7 +14,7 @@ export const Home = () => {
         <Grid
           item
           col={{ sm: 12, md: 1 }}
-          direction={{ sm: 'row', lg: 'column' }}
+          direction={{ sm: 'row', md: 'column' }}
           style={{
             justifyContent: 'space-evenly',
           }}
