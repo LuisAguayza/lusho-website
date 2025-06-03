@@ -1,9 +1,23 @@
-import { InferType, object, string } from "yup";
+import { useI18n } from "context/i18n";
+import { object, string } from "yup";
 
-export const contactSchema = object().shape({
-  name: string().required('Name is required').min(3, 'Debe contener al menos 3 caracteres'),
-  email: string().email().required(),
-  message: string().required('Message is required').min(10, 'Debe contener al menos 10 caracteres'),
-});
+export interface IContactForm {
+  message: string,
+  email: string,
+  name: string
+}
 
-export type ContactType = InferType<typeof contactSchema>;
+export const useContactSchema = () => {
+  const { translate } = useI18n();
+  return object({
+    name: string()
+      .required(translate('form.required'))
+      .min(3, translate('form.min', { min: 3 })),
+    email: string()
+      .required(translate('form.required'))
+      .email(translate('form.email')),
+    message: string()
+      .required(translate('form.required'))
+      .min(10, translate('form.min', { min: 10 })),
+  });
+};

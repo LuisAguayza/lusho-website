@@ -2,9 +2,9 @@
 	"hello": "hello",
   "title": {
     "home": "Inicio",
-    "about": "About",
+    "about": "Acerce de mi",
     "skills": "Skills",
-    "contact": "Contact"
+    "contact": "Contacto"
   },
   "home": {
     "description": "Desarrollador Fullstack en Cuenca, Ecuador, especializado en React y .NET Core, enfocado en crear aplicaciones web escalables, seguras y fáciles de mantener. Comprometido con escribir código limpio y eficiente, siempre buscando optimizar la experiencia del usuario. Me gusta enfrentar retos técnicos con paciencia y un poco de humor para mantener la creatividad.",
@@ -12,9 +12,10 @@
   },
   "about": {
     "subtitle": "Introducción",
-    "introduction": "Fullstack Developer with experience in building scalable web applications, specializing in React, Next.js, and TypeScript for the frontend, and .NET Core, Entity Framework, and MySQL for the backend. Passionate about designing modern, high-performance, and secure architectures, focusing on efficiency, maintainability, and best practices. Strong experience in API development, database optimization, and real-time communication with WebSockets.",
+    "introduction": "Desarrollador Fullstack con experiencia en la construcción de aplicaciones web escalables, especializado en React, Next.js y TypeScript para el frontend, y .NET Core, Entity Framework y MySQL para el backend. Apasionado por diseñar arquitecturas modernas, seguras y de alto rendimiento, con un enfoque en la eficiencia, mantenibilidad y buenas prácticas. Amplia experiencia en desarrollo de APIs, optimización de bases de datos y comunicación en tiempo real mediante WebSockets.",
     "downloadCV": "Descargar CV",
-    "yearsExperience": "+{a} años"
+    "yearsExperience": "+ {{years}} años",
+    "experience": "Experiencia"
   },
   "skills": {
     "subtitle": "Mi stack de trabajo"
@@ -26,6 +27,9 @@
     "sendMessage": "Envíame un mensaje",
     "sendWhatsapp": "Envíame un WhatsApp",
     "form": {
+      "name": "Nombre",
+      "mail": "Correo electrónico",
+      "message": "Mensaje",
       "namePlaceholder": "Ingresa tu nombre",
       "emailPlaceholder": "Ingresa tu mail",
       "messagePlaceholder": "Tu mensaje",
@@ -37,16 +41,19 @@
     }
   },
   "form": {
-    "requiredField": "Este campo es obligatorio.",
-    "minLength": "Debe contener al menos {min} caracteres."
+    "required": "Este campo es obligatorio.",
+    "min": "Debe contener al menos {{min}} caracteres.",
+    "email": "Ingresa un email válido",
+    "send": "Enviar"
   },
   "utils": {
     "error": "Ups... algo salió mal.",
     "success": "Éxito",
     "changeTheme": "Cambiar tema",
-    "changeLanguage": "Cambiar idioma"
+    "changeLanguage": "Cambiar idioma",
+    "mode": "Tema"
   },
   "footer": {
-    "rights": "Todos los derechos reservados"
+    "rights": "Todos los derechos reservados."
   }
 }

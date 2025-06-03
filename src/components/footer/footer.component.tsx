@@ -1,8 +1,12 @@
 import { Icon, Link, Title } from 'components-styled';
 import { FooterContainer, FooterContent, FooterLinks, FooterText } from '.';
 import { socialNetwork } from 'const';
+import { useI18n } from 'context/i18n';
 
 export const Footer = () => {
+
+  const { translate } = useI18n();
+
   return (
     <FooterContainer>
       <FooterContent>
@@ -14,7 +18,7 @@ export const Footer = () => {
             </Link>
           )}
         </FooterLinks>
-        <FooterText>© {new Date().getFullYear()} Lusho. All rights reserved.</FooterText>
+        <FooterText>© {new Date().getFullYear()} Lusho. {translate('footer.rights')}</FooterText>
       </FooterContent>
     </FooterContainer>
   )

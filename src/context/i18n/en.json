@@ -12,9 +12,10 @@
   },
   "about": {
     "subtitle": "My introduction",
-    "introduction": "Desarrollador Fullstack con experiencia en la construcción de aplicaciones web escalables, especializado en React, Next.js y TypeScript para el frontend, y .NET Core, Entity Framework y MySQL para el backend. Apasionado por diseñar arquitecturas modernas, seguras y de alto rendimiento, con un enfoque en la eficiencia, mantenibilidad y buenas prácticas. Amplia experiencia en desarrollo de APIs, optimización de bases de datos y comunicación en tiempo real mediante WebSockets.",
+    "introduction": "Fullstack Developer with experience in building scalable web applications, specializing in React, Next.js, and TypeScript for the frontend, and .NET Core, Entity Framework, and MySQL for the backend. Passionate about designing modern, high-performance, and secure architectures, focusing on efficiency, maintainability, and best practices. Strong experience in API development, database optimization, and real-time communication with WebSockets.",
     "downloadCV": "Download CV",
-    "yearsExperience": "+{a} years"
+    "yearsExperience": "+ {{years}} years",
+    "experience": "Experience"
   },
   "skills": {
     "subtitle": "My working stack"
@@ -26,6 +27,9 @@
     "sendMessage": "Send me a message",
     "sendWhatsapp": "Send me a WhatsApp",
     "form": {
+      "name": "Name",
+      "mail": "Email",
+      "message": "Message",
       "namePlaceholder": "Enter your name",
       "emailPlaceholder": "Enter your email",
       "messagePlaceholder": "Your message",
@@ -37,14 +41,17 @@
     }
   },
   "form": {
-    "requiredField": "This field is required.",
-    "minLength": "Must be at least {min} characters long."
+    "required": "This field is required.",
+    "min": "Must be at least {{min}} characters long.",
+    "email": "Email must be a valid email.",
+    "send": "Send"
   },
   "utils": {
     "error": "Oops! Something went wrong",
     "success": "Success",
     "changeTheme": "Change theme",
-    "changeLanguage": "Change language"
+    "changeLanguage": "Change language",
+    "mode": "Mode"
   },
   "footer": {
     "rights": "All rights reserved"

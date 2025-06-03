@@ -17,15 +17,15 @@ export const HeaderLayout = () => {
 		<Header>
 			<Nav>
 				<NavLogo>
-          {`Lusho`}
+          <Link href='#home'>Lusho</Link>
         </NavLogo>
 				<NavMenu isHide={isHide}>
 					<List>
-            { headerLinks.map(({ href, icon, name }) =>
+            { headerLinks.map(({ href, icon, name, intl = ''}) =>
               <ListItem key={name}>
                 <Link href={href}>
                   <IconHeader className={icon} />
-                  {name}
+                  {translate(intl)}
                 </Link>
               </ListItem>
             )}
@@ -36,7 +36,7 @@ export const HeaderLayout = () => {
                 cursor: 'pointer'
               }}>
                 <ThemeIcon className={isDarkTheme ? 'uil uil-moon' : 'uil uil-sun'} />
-                <ThemeLabel>Mode</ThemeLabel>
+                <ThemeLabel>{translate('utils.mode')}</ThemeLabel>
               </Div>
             </ListItem>
             <ListItem onClick={changeLanguage}>

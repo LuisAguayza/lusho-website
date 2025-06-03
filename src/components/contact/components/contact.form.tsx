@@ -2,31 +2,33 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { mailingService } from 'api';
 import { Form, FormInputText, FormInputTextArea, Grid, LoadingButton } from "components-styled";
 import { useFeedback } from 'context/feedback';
+import { useI18n } from 'context/i18n';
 import { useState } from 'react';
 import { useForm } from "react-hook-form";
-import { contactSchema, ContactType } from '.';
+import { IContactForm, useContactSchema } from '.';
 
 export const ContactForm = () => {
   const { sendContactEmail } = mailingService;
   const [loading, setLoading] = useState(false);
   const { showErrorModal, showSuccessModal } = useFeedback();
-  const { control, handleSubmit, reset } = useForm<ContactType>({
+  const { translate } = useI18n();
+  const { control, handleSubmit, reset } = useForm<IContactForm>({
     defaultValues: {
       message: '',
       email: '',
       name: '',
     },
-    resolver: yupResolver(contactSchema)
+    resolver: yupResolver(useContactSchema())
   });
 
-  const handleSendMessage = async (data: ContactType) => {
+  const handleSendMessage = async (data: IContactForm) => {
     try {
       setLoading(true);
       await sendContactEmail(data);
       reset();
-      showSuccessModal('Su mensaje se ha enviado correctamente')
+      showSuccessModal(translate('contact.form.messageSent'))
     } catch (error) {
-      showErrorModal('No se pudo enviar tu mensaje :(')
+      showErrorModal(translate('contact.form.notSent'))
       console.log({ error })
     } finally {
       setLoading(false);
@@ -39,28 +41,28 @@ export const ContactForm = () => {
         <FormInputText
           control={control}
           name='name'
-          label='Name'
-          placeholder='Enter your name'
-          tooltip='Your name'
+          label={translate("contact.form.name")}
+          placeholder={translate("contact.form.namePlaceholder")}
+          tooltip={translate("contact.form.nameTooltip")}
         />
         <FormInputText
           control={control}
           name='email'
-          label='Mail'
-          placeholder='Enter your email'
-          tooltip='Your email'
+          label={translate("contact.form.mail")}
+          placeholder={translate("contact.form.emailPlaceholder")}
+          tooltip={translate("contact.form.emailTooltip")}
         />
         <FormInputTextArea
           control={control}
           name='message'
-          label="Message"
-          placeholder="Your message"
-          tooltip="Your message"
+          label={translate("contact.form.message")}
+          placeholder={translate("contact.form.messagePlaceholder")}
+          tooltip={translate("contact.form.messageTooltip")}
           rows={3}
         />
         <LoadingButton
           type='submit'
-          label='Send Message'
+          label={translate("form.send")}
           fullwidth
           loading={loading}
           icon='uil uil-message'

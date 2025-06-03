@@ -1,46 +1,48 @@
 import { Body1, Button, Card, CardTitle, Div, Grid, Icon } from "components-styled"
+import { useI18n } from "context/i18n";
 
 const currentYear = new Date().getFullYear();
 
 const info = [
   {
-    title: 'Experience',
-    description: `${currentYear - 2021}+ years`,
-    icon: 'uil uil-bag'
+    title: 'about.experience',
+    description: `about.yearsExperience`,
+    icon: 'uil uil-bag',
+    years: currentYear - 2021
   },
   {
     title: 'Frontend',
-    description: 'Javascript, React',
+    description: 'React',
     icon: 'uil uil-brackets-curly'
   },
   {
     title: 'Backend',
-    description: 'C#, .Net',
+    description: '.Net Core',
     icon: 'uil uil-lock'
   },
 ]
 
 export const AboutInfo = () => {
+
+  const { translate } = useI18n();
+
   return (
     <Grid
       container
       spacing={{ md: 'sm', xs: 'xs' }}
       style={{ justifyContent: 'space-between' }}
     >
-      { info.map(({ description, icon, title }) => 
-        <CardInfo key={title} description={description} title={title} icon={icon}/>
+      { info.map(({ description, icon, title, years } ) => 
+        <CardInfo key={title} description={translate(description, { years: 4 }, description)} title={translate(title)} icon={icon}/>
       )}
       <Grid item col={12}>
-        <Body1>
-          Frontend with experience in designing and building scalable web applications using React and TypeScript. Specialized in
-          developing modular, high-performance user interfaces with a strong focus on maintainability, accessibility, and modern UI/UX
-          principles.
+        <Body1>{translate('about.introduction')}
         </Body1>
       </Grid>
       <Grid item col={12}>
         <a download href='/src/assets/Luis Aguayza CV.docx.pdf'>
           <Button fullwidth={{ xs: true, md: false }}>
-            Download CV <Icon className="uil uil-file-alt"/>
+            {translate('about.downloadCV')} <Icon className="uil uil-file-alt"/>
           </Button>
         </a>
       </Grid>

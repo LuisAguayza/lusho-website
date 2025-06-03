@@ -1,6 +1,6 @@
 import { useStorage } from "hooks";
 import { createContext, ReactNode, useContext, useEffect, useState } from "react";
-import { LanguageContextProps, LanguageState, LocaleType } from ".";
+import { LanguageContextProps, LanguageState, LocaleType, TranslationVars } from ".";
 
 type Translations = {
   [key: string]: {
@@ -12,7 +12,7 @@ const I18nContext = createContext<LanguageContextProps>({} as LanguageContextPro
 
 export const LanguageProvider = ({ children }: { children: ReactNode }) => {
 
-  const [translations, setTranslations] = useState<Translations>({});
+  const [translations, setTranslations] = useState<Translations>();
 
   const { setStorage, stateStorage: language } = useStorage<LanguageState>({
     key: 'language',
@@ -39,27 +39,32 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
     loadTranslations(language.locale);
   }, [language.locale]);
 
-  // Función para traducir las claves
-  const translate = (key: string, defaultMessage: string = ''): string => {
-    const keys = key.split(".");
+  const translate = (
+    key: string,
+    vars: TranslationVars = {},
+    defaultMessage: string = ''
+  ): string => {
+    const keys = key.split('.');
     let value: any = translations;
 
-    // Recorrer las claves del objeto y buscar la traducción
     for (let k of keys) {
-      if (value && value[k]) {
+      if (value && typeof value === 'object' && k in value) {
         value = value[k];
       } else {
-        value = defaultMessage; // Mensaje por defecto si no se encuentra la clave
-        break;
+        return defaultMessage || key;
       }
     }
+    
+    if (typeof value !== 'string') return defaultMessage || key;
 
-    return value;
+    return value.replace(/\{\{(\w+)\}\}/g, (_, varName) => {
+      return vars[varName] !== undefined ? String(vars[varName]) : '';
+    });
   };
 
   return (
     <I18nContext.Provider value={{ translate, changeLanguage, currentLanguage: language.locale }}>
-      {children}
+      {translations ? children : null}
     </I18nContext.Provider>
   );
 };

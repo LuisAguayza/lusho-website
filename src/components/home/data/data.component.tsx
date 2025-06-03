@@ -1,15 +1,17 @@
 import { Body1, Button, Div, Grid, Icon, SubSubtitle, Title } from 'components-styled'
+import { useI18n } from 'context/i18n'
 
 export const Data = () => {
+
+  const { translate } = useI18n();
+
   return (
     <Div>
       <Title>
         {`Luis Aguayza`}
       </Title>
-      <SubSubtitle>
-        {`FrontEnd Developer`}
-      </SubSubtitle>
-      <Body1>{`I'm software developer based in Cuenca - Ecuador, and I'm very passionate and dedicated to my work.`}</Body1>
+      <SubSubtitle>{translate('home.subtitle')}</SubSubtitle>
+      <Body1>{translate('home.description')}</Body1>
       <a href='#contact'>
         <Button fullwidth={{ xs: true, md: false }}>
             Contact me <Icon className='uil uil-message'/>

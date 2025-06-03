@@ -1,11 +1,15 @@
 import { CardTitle, Grid, SectionContainer, Subtitle, Title } from "components-styled"
 import { ContactForm, ContactInfo } from "./components"
+import { useI18n } from "context/i18n"
 
 export const ContactComponent = () => {
+
+  const { translate } = useI18n();
+
   return (
     <SectionContainer id='contact'>
-      <Title style={{ textAlign: 'center', marginBottom: 0 }}>Contact</Title>
-      <CardTitle style={{ textAlign: 'center', marginTop: 1}}>Contact Me</CardTitle>
+      <Title style={{ textAlign: 'center', marginBottom: 0 }}>{translate('title.contact')}</Title>
+      <CardTitle style={{ textAlign: 'center', marginTop: 1}}>{translate('contact.subtitle')}</CardTitle>
       <Grid
         container
         direction={{ xs: 'column', md: 'row' }}
@@ -13,11 +17,11 @@ export const ContactComponent = () => {
         style={{ justifyContent: 'space-between', textAlign: 'center' }}
       >
         <Grid item col={{ sm: 12, md: 5 }}>
-          <Subtitle>Talk to me</Subtitle>
+          <Subtitle>{translate('contact.talkToMe')}</Subtitle>
           <ContactInfo />
         </Grid>
         <Grid item col={{ sm: 12, md: 5 }}>
-          <Subtitle>Send me a message</Subtitle>
+          <Subtitle>{translate('contact.sendMessage')}</Subtitle>
           <ContactForm />
         </Grid>
       </Grid>

@@ -47,7 +47,6 @@ export const Link = styled.a`
   flex-direction: column;
   align-items: center;
 	cursor: pointer;
-  font-size: ${({ theme }) => theme.typography.small};
 	font-weight: ${({ theme }) => theme.fontWeight.medium};
 	&:hover {
 		color: ${({ theme }) => theme.color.title};

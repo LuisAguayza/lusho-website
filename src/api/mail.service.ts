@@ -1,5 +1,5 @@
 import { post } from "api";
-import { ContactType } from "components/contact/components";
+import { IContactForm } from "components/contact/components";
 import { SITE_INFO } from "const";
 
 interface BrevoEmailPayload {
@@ -32,7 +32,7 @@ const sendEmail = async (payload: BrevoEmailPayload) => {
   );
 };
 
-const sendContactEmail = (data: ContactType) => {
+const sendContactEmail = (data: IContactForm) => {
   const { email } = SITE_INFO;
   const htmlContent = `
     <p><strong>Nombre:</strong> ${data.name}</p>

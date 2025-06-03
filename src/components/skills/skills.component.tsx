@@ -1,12 +1,16 @@
 import { CardTitle, SectionContainer, Title } from "components-styled"
 import { Tooltip } from "components-styled/tooltip"
 import { CarouselTrack, CarouselWrapper, LogoCard, mySkills, TechCard, TechGrid } from "."
+import { useI18n } from "context/i18n"
 
 export const Skills = () => {
+
+  const { translate } = useI18n();
+
   return (
     <SectionContainer id='skills'>
-      <Title style={{ textAlign: 'center', marginBottom: 0 }}>Skills</Title>
-      <CardTitle style={{ textAlign: 'center', marginTop: 1}}>My working stack</CardTitle>
+      <Title style={{ textAlign: 'center', marginBottom: 0 }}>{translate('title.skills')}</Title>
+      <CardTitle style={{ textAlign: 'center', marginTop: 1}}>{translate('skills.subtitle')}</CardTitle>
       <CarouselWrapper>
         <CarouselTrack>
           {[...mySkills, ...mySkills].map(({ name, Component }, i) => (

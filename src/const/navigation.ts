@@ -4,28 +4,33 @@ interface AppLink {
   name: string;
   href: string;
   icon: string;
+  intl?: string;
 }
 
 export const headerLinks: AppLink[] = [
   {
     icon: 'uil uil-estate',
     href: '#home',
-    name: 'Home'
+    name: 'Home',
+    intl: 'title.home'
   },
   {
     icon: 'uil uil-user',
     href: '#about',
-    name: 'About'
+    name: 'About',
+    intl: 'title.about'
   },
   {
     icon: 'uil uil-arrow',
     href: '#skills',
-    name: 'Skills'
+    name: 'Skills',
+    intl: 'title.skills'
   },
   {
     icon: 'uil uil-message',
     href: '#contact',
-    name: 'Contact'
+    name: 'Contact',
+    intl: 'title.contact'
   }
 ]
 
