@@ -1,11 +1,11 @@
 import { yupResolver } from '@hookform/resolvers/yup';
-import { mailingService } from 'api';
 import { Form, FormInputText, FormInputTextArea, Grid, LoadingButton } from "components-styled";
 import { useFeedback } from 'context/feedback';
 import { useI18n } from 'context/i18n';
 import { useState } from 'react';
 import { useForm } from "react-hook-form";
 import { IContactForm, useContactSchema } from '.';
+import { mailingService } from '../../../../api';
 
 export const ContactForm = () => {
   const { sendContactEmail } = mailingService;

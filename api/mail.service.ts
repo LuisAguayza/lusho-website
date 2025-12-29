@@ -1,6 +1,6 @@
-import { post } from "api";
 import { IContactForm } from "components/contact/components";
 import { SITE_INFO } from "const";
+import { post } from ".";
 
 interface BrevoEmailPayload {
   sender: {
