@@ -21,7 +21,8 @@ interface BrevoResponse {
 
 
 const sendEmail = async (payload: BrevoEmailPayload) => {
-  const brevoApiKey = import.meta.env.VITE_MAIL_API_KEY;
+  // const brevoApiKey = import.meta.env.VITE_MAIL_API_KEY;
+  const brevoApiKey = '';
   const brevoApiUrl = 'https://api.brevo.com/v3/'; 
   return await post<BrevoResponse, BrevoEmailPayload>(
     `${brevoApiUrl}smtp/email`,
