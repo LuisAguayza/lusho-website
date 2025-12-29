@@ -40,7 +40,7 @@ export const AboutInfo = () => {
         </Body1>
       </Grid>
       <Grid item col={12}>
-        <a download href='/src/assets/Luis Aguayza CV.docx.pdf'>
+        <a download href='/docs/Luis Aguayza CV.pdf'>
           <Button fullwidth={{ xs: true, md: false }}>
             {translate('about.downloadCV')} <Icon className="uil uil-file-alt"/>
           </Button>

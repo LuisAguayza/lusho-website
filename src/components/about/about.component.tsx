@@ -14,7 +14,7 @@ export const About = () => {
       <Grid container spacing={{ xs: 'xs', md: 'xl' }}>
         <Grid item col={{ sm: 0, md: 3 }}>
           <ProfileWrapperSquare>
-            <Img src='/src/assets/Lusho.jpg' alt='lusho' />
+            <Img src='/images/Lusho.jpg' alt='lusho' />
           </ProfileWrapperSquare>
         </Grid>
         <Grid item col={{ sm: 12, md: 8 }}>
