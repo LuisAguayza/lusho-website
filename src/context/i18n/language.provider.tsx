@@ -23,7 +23,7 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
 
   const loadTranslations = async (locale: LocaleType) => {
     try {
-      const response = await fetch(`/src/context/i18n/${locale}.json`);
+      const response = await fetch(`/i18n/${locale}.json`);
       const data: Translations = await response.json();
       setTranslations(data);
     } catch (error) {
