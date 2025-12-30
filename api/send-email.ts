@@ -1,4 +1,8 @@
-import { BrevoEmailPayload, BrevoResponse } from '.';
+export const config = {
+  runtime: 'edge',
+};
+
+import type { BrevoEmailPayload, BrevoResponse } from '.';
 
 const RATE_LIMIT_WINDOW = 60_000;
 const MAX_REQUESTS = 5;
@@ -7,10 +11,7 @@ const API_URL = 'https://api.brevo.com/v3/smtp/email';
 const ipRequests = new Map<string, { count: number; timestamp: number }>();
 
 function getClientIp(req: Request): string {
-  return (
-    req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ??
-    'unknown'
-  );
+  return req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ?? 'unknown';
 }
 
 function rateLimit(ip: string): boolean {
@@ -37,31 +38,25 @@ function sanitizeHtml(input: string): string {
 }
 
 function silentOk() {
-  return new Response(
-    JSON.stringify({ success: true }),
-    { status: 200 }
-  );
+  return new Response(JSON.stringify({ success: true }), {
+    status: 200,
+    headers: { 'Content-Type': 'application/json' },
+  });
 }
 
 export default async function handler(req: Request): Promise<Response> {
-  if (req.method !== 'POST') {
-    return new Response(
-      JSON.stringify({ success: false, message: 'Method Not Allowed' }),
-      { status: 405 }
-    );
-  }
+  if (req.method !== 'POST') return new Response(
+    JSON.stringify({ success: false, message: 'Method Not Allowed' }),
+    { status: 405, headers: { 'Content-Type': 'application/json' } }
+  );
 
   const apiKey = process.env.BREVO_API_KEY;
-  if (!apiKey) {
-    return new Response(
-      JSON.stringify({ success: false, message: 'Server misconfigured' }),
-      { status: 500 }
-    );
-  }
-
+  if (!apiKey) return new Response(
+    JSON.stringify({ success: false, message: 'Server misconfigured' }),
+    { status: 500, headers: { 'Content-Type': 'application/json' } }
+  );
 
   const ip = getClientIp(req);
-
   if (rateLimit(ip)) return silentOk();
 
   let payload: BrevoEmailPayload;
@@ -71,33 +66,17 @@ export default async function handler(req: Request): Promise<Response> {
     return silentOk();
   }
 
-  if ((payload as any).sender?.company) {
-    return silentOk();
-  }
-
-  if (
-    !payload.sender?.email ||
-    !payload.to?.length ||
-    !payload.subject ||
-    !payload.htmlContent
-  ) {
-    return silentOk();
-  }
-
-  if (!isValidEmail(payload.sender.email)) {
-    return silentOk();
-  }
+  if ((payload as any).sender?.company) return silentOk();
+  if (!payload.sender?.email || !payload.to?.length || !payload.subject || !payload.htmlContent) return silentOk();
+  if (!isValidEmail(payload.sender.email)) return silentOk();
 
   payload.htmlContent = sanitizeHtml(payload.htmlContent);
 
   const country = req.headers.get('x-vercel-ip-country');
-  if (['RU', 'CN', 'KP'].includes(country ?? '')) {
-    return silentOk();
-  }
+  if (['RU', 'CN', 'KP'].includes(country ?? '')) return silentOk();
 
   try {
-    const response = await fetch(
-      API_URL, {
+    const response = await fetch(API_URL, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -106,23 +85,14 @@ export default async function handler(req: Request): Promise<Response> {
       body: JSON.stringify(payload),
     });
 
-    if (!response.ok) {
-      return silentOk();
-    }
+    if (!response.ok) return silentOk();
 
     const data: BrevoResponse = await response.json();
 
-    return new Response(
-      JSON.stringify({
-        success: true,
-        data,
-      }),
-      {
-        status: 200,
-        headers: { 'Content-Type': 'application/json' },
-      }
-    );
-
+    return new Response(JSON.stringify({ success: true, data }), {
+      status: 200,
+      headers: { 'Content-Type': 'application/json' },
+    });
   } catch {
     return silentOk();
   }
