@@ -4,7 +4,8 @@ import { object, string } from "yup";
 export interface IContactForm {
   message: string,
   email: string,
-  name: string
+  name: string,
+  website: string | null;
 }
 
 export const useContactSchema = () => {
@@ -19,5 +20,6 @@ export const useContactSchema = () => {
     message: string()
       .required(translate('form.required'))
       .min(10, translate('form.min', { min: 10 })),
+    website: string().nullable().default(null),
   });
 };

@@ -1,2 +1,2 @@
-export * from './api.config';
-export * from './mail.service';
+export * from './mailing.types';
+export * from './send-mail';

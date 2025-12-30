@@ -37,7 +37,7 @@
       "emailTooltip": "Tu mail",
       "messageTooltip": "Tu mensaje",
       "messageSent": "¡Gracias por escribirme! Te responderé pronto 😊",
-      "notSent": "No se pudo. Intenta de nuevo más tarde."
+      "notSent": "No se pudo enviar tu mensaje. Intenta de nuevo más tarde."
     }
   },
   "form": {

@@ -5,7 +5,7 @@ import { useI18n } from 'context/i18n';
 import { useState } from 'react';
 import { useForm } from "react-hook-form";
 import { IContactForm, useContactSchema } from '.';
-import { mailingService } from '../../../../api';
+import { mailingService } from 'services';
 
 export const ContactForm = () => {
   const { sendContactEmail } = mailingService;
@@ -24,12 +24,13 @@ export const ContactForm = () => {
   const handleSendMessage = async (data: IContactForm) => {
     try {
       setLoading(true);
-      await sendContactEmail(data);
-      reset();
+      const test = await sendContactEmail(data);
+      if (!test.success) throw new Error();
       showSuccessModal(translate('contact.form.messageSent'))
+      reset();
     } catch (error) {
       showErrorModal(translate('contact.form.notSent'))
-      console.log({ error })
+      console.error({ error })
     } finally {
       setLoading(false);
     }
@@ -67,6 +68,14 @@ export const ContactForm = () => {
           loading={loading}
           icon='uil uil-message'
           style={{ marginTop: '0.3rem' }}
+        />
+        <FormInputText
+          control={control}
+          name='website'
+          label=''
+          tabIndex={-1}
+          autoComplete='off'
+          style={{ display: 'none' }}
         />
       </Grid>
     </Form>
