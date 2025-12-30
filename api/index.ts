@@ -1,2 +1,2 @@
 export * from './mailing.types';
-export * from './send-mail';
+export * from './send-email';
