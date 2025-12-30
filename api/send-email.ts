@@ -45,16 +45,21 @@ function silentOk() {
 }
 
 export default async function handler(req: Request): Promise<Response> {
-  if (req.method !== 'POST') return new Response(
-    JSON.stringify({ success: false, message: 'Method Not Allowed' }),
-    { status: 405, headers: { 'Content-Type': 'application/json' } }
-  );
+  if (req.method !== 'POST') {
+    return new Response(
+      JSON.stringify({ success: false, message: 'Method Not Allowed' }),
+      { status: 405, headers: { 'Content-Type': 'application/json' } }
+    );
+  }
 
   const apiKey = process.env.BREVO_API_KEY;
-  if (!apiKey) return new Response(
-    JSON.stringify({ success: false, message: 'Server misconfigured' }),
-    { status: 500, headers: { 'Content-Type': 'application/json' } }
-  );
+  if (!apiKey) {
+    console.error('BREVO_API_KEY missing');
+    return new Response(
+      JSON.stringify({ success: false, message: 'Server misconfigured' }),
+      { status: 500, headers: { 'Content-Type': 'application/json' } }
+    );
+  }
 
   const ip = getClientIp(req);
   if (rateLimit(ip)) return silentOk();
@@ -62,13 +67,31 @@ export default async function handler(req: Request): Promise<Response> {
   let payload: BrevoEmailPayload;
   try {
     payload = await req.json();
-  } catch {
-    return silentOk();
+  } catch (err) {
+    console.error('Invalid JSON payload:', err);
+    return new Response(
+      JSON.stringify({ success: false, reason: 'Invalid JSON' }),
+      { status: 400, headers: { 'Content-Type': 'application/json' } }
+    );
   }
 
-  if ((payload as any).sender?.company) return silentOk();
-  if (!payload.sender?.email || !payload.to?.length || !payload.subject || !payload.htmlContent) return silentOk();
-  if (!isValidEmail(payload.sender.email)) return silentOk();
+  // anti-bot check
+  if (!!(payload as any).sender?.website?.length) return silentOk();
+
+  // payload validation
+  if (!payload.sender?.email || !payload.to?.length || !payload.subject || !payload.htmlContent) {
+    return new Response(
+      JSON.stringify({ success: false, reason: 'Invalid payload' }),
+      { status: 400, headers: { 'Content-Type': 'application/json' } }
+    );
+  }
+
+  if (!isValidEmail(payload.sender.email)) {
+    return new Response(
+      JSON.stringify({ success: false, reason: 'Invalid sender email' }),
+      { status: 400, headers: { 'Content-Type': 'application/json' } }
+    );
+  }
 
   payload.htmlContent = sanitizeHtml(payload.htmlContent);
 
@@ -85,15 +108,25 @@ export default async function handler(req: Request): Promise<Response> {
       body: JSON.stringify(payload),
     });
 
-    if (!response.ok) return silentOk();
+    if (!response.ok) {
+      const text = await response.text();
+      console.error('Brevo API error:', response.status, text);
+      return new Response(
+        JSON.stringify({ success: false, reason: 'Brevo API error', status: response.status }),
+        { status: 500, headers: { 'Content-Type': 'application/json' } }
+      );
+    }
 
     const data: BrevoResponse = await response.json();
-
     return new Response(JSON.stringify({ success: true, data }), {
       status: 200,
       headers: { 'Content-Type': 'application/json' },
     });
-  } catch {
-    return silentOk();
+  } catch (err) {
+    console.error('Fetch failed:', err);
+    return new Response(
+      JSON.stringify({ success: false, reason: 'Fetch failed' }),
+      { status: 500, headers: { 'Content-Type': 'application/json' } }
+    );
   }
 }
